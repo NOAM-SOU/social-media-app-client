@@ -1,0 +1,11 @@
+.social-formsignup-media {
+  border: 1px solid #f13838;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-button-media {
+  border: 1px solid #f13838;
+}

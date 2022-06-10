@@ -9,74 +9,110 @@ import AuthApi from "../Apis/AuthApi";
 import jwtDecode from "jwt-decode";
 
 class AuthStore {
+  /**
+   * @private
+   * @type {object}
+   */
+  session = {
+    user: null,
+    errorStatus: 0,
+    profileUser: {},
+  };
+
+  get user() {
+    return this.session.user;
+  }
+
+  get errorStatus() {
+    return this.session.errorStatus;
+  }
+
+  get profileUser() {
+    return this.session.profileUser;
+  }
+
   constructor() {
     makeObservable(this, {
-      user: observable,
-      errorStatus: observable,
+      session: observable,
+      user: computed,
+      errorStatus: computed,
+      isUserLoggedIn: computed,
+      profileUser: computed,
+      login: action.bound,
+      logout: action.bound,
       setUser: action.bound,
-      isLoggedIn: computed,
       signUp: action.bound,
+      getUser: action.bound,
     });
+
     this.setUser(localStorage.getItem("auth_token"));
   }
 
-  /**@type {user} */
-  user = {};
-
-  errorStatus = 0;
-
-  get isLoggedIn() {
-    console.log(this.user);
-    return !!this.user.email;
+  get isUserLoggedIn() {
+    return this.session.user != null;
   }
 
-  /**@param {string} token */
-
+  /**
+   * @private
+   * @param {string} token
+   */
   setUser(token) {
     runInAction(() => {
-      if (token === null) {
+      if (token == null) {
         localStorage.removeItem("auth_token");
-        this.user = {};
+        this.session.user = null;
       } else {
-        try {
         localStorage.setItem("auth_token", token);
-        this.user = jwtDecode(token).user;
-        this.errorStatus = 0;
-        } catch (e) {
-          localStorage.removeItem("auth_token");
-          this.user = {};
-        }
+        this.session.user = jwtDecode(token);
+        this.session.errorStatus = 0;
       }
     });
   }
 
-  /**@param {object} user */
-  signUp = async (user) => {
+  async signUp(user) {
     try {
       const data = await AuthApi.signUp(user);
       this.setUser(data.auth_token);
       console.log(data);
-      console.log("intenta");
     } catch (err) {
+      runInAction(() => {
+        this.session.errorStatus = err.response.data.code;
+      });
       console.log(err);
-      console.log("error mio");
-      
-      // this.errorStatus = err.response;
-      // console.log(errorStatus);
     }
-  };
+  }
 
-  login = async (user) => {
+  logout() {
+    this.setUser(null);
+  }
+
+  async login(user) {
     try {
       const data = await AuthApi.login(user);
       this.setUser(data.auth_token);
-      console.log(data);
     } catch (err) {
+      runInAction(() => {
+        this.session.errorStatus = err.response.data.code;
+      });
       console.log(err);
-      // this.errorStatus = err.response;
-      // console.log(errorStatus);
     }
-  };
+  }
+
+  async getUser(userId) {
+    try {
+      const data = await AuthApi.getUser(userId);
+      runInAction(() => {
+        console.log("s", data);
+        this.session.profileUser = data;
+      });
+    } catch (err) {
+      runInAction(() => {
+        this.session.errorStatus = err.response.data.code;
+      });
+      console.log(err);
+    }
+  }
 }
 
-export default AuthStore;
+const authStore = new AuthStore();
+export default authStore;

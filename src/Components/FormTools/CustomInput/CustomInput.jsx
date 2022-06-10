@@ -1,14 +1,19 @@
 import { useField } from "formik";
 import { observer } from "mobx-react";
-import "./CustomInput.css";
+// import "./CustomInput.css";
 
 function CustomInput(props) {
   const [field, meta] = useField(props);
 
-  const aria = { "aria-invalid":  !!meta.error };
+  const aria = { "aria-invalid": !!meta.error };
   return (
     <>
-      <input className="social-custominput-media" {...field} {...props} {...aria}/>
+      <input
+        className="social-custominput-media"
+        {...field}
+        {...props}
+        {...aria}
+      />
       {meta.touched && meta.error ? (
         <div className="social-errordiv-media">{meta.error}</div>
       ) : null}

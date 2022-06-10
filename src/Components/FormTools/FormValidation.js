@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import profileimg from "./profileimg.png";
 
 const initialValuesRegister = {
   name: "",
@@ -6,6 +7,7 @@ const initialValuesRegister = {
   password: "",
   biography: "",
   confirmPassword: "",
+  profileImg: profileimg,
 };
 
 const validationSchemaRegister = Yup.object({
@@ -15,14 +17,14 @@ const validationSchemaRegister = Yup.object({
   email: Yup.string().required("Email is required").email("Email is invalid"),
   password: Yup.string()
     .required("Password is required")
-    .min(8, "Password must be at least 8 characters"),
+    .min(4, "Password must be at least 8 characters"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is required"),
   biography: Yup.string()
     .required("Biography is required")
     .min(2, "Biography must be at least 2 characters"),
-  // profileImg: Yup.string().required("Profile image is required"),
+  profileImg: Yup.string().required("Profile image is required"),
 });
 
 const initialValuesLogin = {
@@ -35,9 +37,23 @@ const validationSchemaLogin = Yup.object({
   password: Yup.string().required("Password is required"),
 });
 
+const initialValueszPost = {
+  postImg: "",
+  title: "",
+  content: "",
+};
+
+const validationSchemaPost = Yup.object({
+  img: Yup.string().required("Post image is required"),
+  title: Yup.string().required("Title is required"),
+  content: Yup.string().required("Content is required"),
+});
+
 export {
   initialValuesRegister,
   validationSchemaRegister,
   initialValuesLogin,
   validationSchemaLogin,
+  initialValueszPost,
+  validationSchemaPost,
 };

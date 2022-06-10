@@ -1,4 +1,4 @@
-import { loginApi } from "./api";
+import api, { loginApi } from "./api";
 
 class AuthApi {
   /**
@@ -11,6 +11,11 @@ class AuthApi {
 
   login = async (user) => {
     const res = await loginApi.post("authuser/login", user);
+    return res.data;
+  };
+
+  getUser = async (userId) => {
+    const res = await api.get(`follow/getuser/${userId}`);
     return res.data;
   };
 }

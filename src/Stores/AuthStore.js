@@ -16,7 +16,6 @@ class AuthStore {
   session = {
     user: null,
     errorStatus: 0,
-    profileUser: {},
   };
 
   get user() {
@@ -27,22 +26,16 @@ class AuthStore {
     return this.session.errorStatus;
   }
 
-  get profileUser() {
-    return this.session.profileUser;
-  }
-
   constructor() {
     makeObservable(this, {
       session: observable,
       user: computed,
       errorStatus: computed,
       isUserLoggedIn: computed,
-      profileUser: computed,
       login: action.bound,
       logout: action.bound,
       setUser: action.bound,
       signUp: action.bound,
-      getUser: action.bound,
     });
 
     this.setUser(localStorage.getItem("auth_token"));
@@ -90,21 +83,6 @@ class AuthStore {
     try {
       const data = await AuthApi.login(user);
       this.setUser(data.auth_token);
-    } catch (err) {
-      runInAction(() => {
-        this.session.errorStatus = err.response.data.code;
-      });
-      console.log(err);
-    }
-  }
-
-  async getUser(userId) {
-    try {
-      const data = await AuthApi.getUser(userId);
-      runInAction(() => {
-        console.log("s", data);
-        this.session.profileUser = data;
-      });
     } catch (err) {
       runInAction(() => {
         this.session.errorStatus = err.response.data.code;

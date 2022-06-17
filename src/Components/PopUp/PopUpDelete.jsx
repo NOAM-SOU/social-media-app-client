@@ -1,10 +1,10 @@
 import { observer } from "mobx-react";
 import rootStore from "../../Stores/main";
 
-const { POST_STORE, AUTH_STORE } = rootStore;
+const { USER_STORE, AUTH_STORE } = rootStore;
 
 function PopUpDelete(props) {
-  const { deletePost } = POST_STORE;
+  const { deletePost } = USER_STORE;
   const { user } = AUTH_STORE;
   return (
     <div className="popup-div-logout">

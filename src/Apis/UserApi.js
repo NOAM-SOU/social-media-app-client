@@ -1,6 +1,26 @@
-import api from "./api";
+import { getFunction, postFunction } from "../Common/GlobalFunction";
 
-class UserApi {}
+class UserApi {
+  async getUser(userId) {
+    return await getFunction("follow/getuser", userId);
+  }
 
-const postApi = new UserApi();
-export default postApi;
+  async followedPosts(userId) {
+    return await getFunction("follow/getposts", userId);
+  }
+
+  async getUserPosts(userId) {
+    return await getFunction("post/new", userId);
+  }
+
+  async addPost(post, userId) {
+    return await postFunction(`post/addnewpost`, userId, post);
+  }
+
+  async deletePost(postId, userId) {
+    return await getFunction("post/deletepost", `${userId}/${postId}`);
+  }
+}
+
+const userApi = new UserApi();
+export default userApi;

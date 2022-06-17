@@ -1,5 +1,5 @@
 import authStore from "./AuthStore";
-import postStore from "./PostStore";
+import userStore from "./UserStore";
 import api from "../Apis/api";
 
 api.interceptors.response.use(undefined, (config) => {
@@ -11,7 +11,7 @@ api.interceptors.response.use(undefined, (config) => {
 
 const rootStores = {
   AUTH_STORE: authStore,
-  POST_STORE: postStore,
+  USER_STORE: userStore,
 };
 
 export default rootStores;

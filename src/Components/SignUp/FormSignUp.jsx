@@ -16,14 +16,16 @@ const { AUTH_STORE } = rootStores;
 
 function FormSignUp() {
   const { signUp, errorStatus } = AUTH_STORE;
-  const [img, setImg] = useState(initialValuesRegister.profileImg);
+  const [profileImg, setProfileImg] = useState(
+    initialValuesRegister.profileImg
+  );
   return (
     <Formik
       initialValues={initialValuesRegister}
       validationSchema={validationSchemaRegister}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         await signUp(values);
-        setImg(initialValuesRegister.profileImg);
+        setProfileImg(initialValuesRegister.profileImg);
         await resetForm();
         setSubmitting(false);
       }}
@@ -33,15 +35,15 @@ function FormSignUp() {
           <div className="div-form-register-container">
             <div className="image-upload">
               <label htmlFor="file-input">
-                <img src={img} className="social-profileimg-media" />
+                <img src={profileImg} className="social-profileimg-media" />
                 <CustomInput
                   name="profileIng"
                   type="file"
                   accept="image/*"
                   onChange={(e) => {
                     props.setFieldValue("profileImg", e.target.value);
-                    imageHandler(e);
-                    console.log("img", img);
+                    imageHandler(e, setProfileImg);
+                    console.log("img", profileImg);
                   }}
                 />
               </label>

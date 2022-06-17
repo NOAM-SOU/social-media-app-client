@@ -11,13 +11,12 @@ import CustomInput from "../../Components/FormTools/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../Components/Layout/Layout";
 
-const { POST_STORE, AUTH_STORE } = rootStores;
+const { USER_STORE, AUTH_STORE } = rootStores;
 
 function NewPost() {
-  const [img, setImg] = useState(null);
-  const { addPost, userPosts } = POST_STORE;
+  const [img, setImg] = useState("");
+  const { addPost } = USER_STORE;
   const { user } = AUTH_STORE;
-  console.log("primero", userPosts);
 
   const navigate = useNavigate();
 
@@ -28,8 +27,10 @@ function NewPost() {
         validationSchema={validationSchemaPost}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           await addPost(values, user._id);
-          navigate("/profilepage");
+          console.log("nononon");
           await resetForm();
+          navigate("/profilepage");
+
           setSubmitting(false);
         }}
       >
@@ -43,9 +44,10 @@ function NewPost() {
                   type="file"
                   accept="image/*"
                   onChange={(e) => {
+                    console.log(e.target.value);
                     props.setFieldValue("img", e.target.value);
                     imageHandler(e, setImg);
-                    console.log("img", img);
+                    // console.log("img", img);
                   }}
                 />
               </label>

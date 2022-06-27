@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../Components/Layout/Layout";
 import rootStore from "../../Stores/main";
 import Post from "../../Components/Post/Post";
@@ -11,17 +11,19 @@ function ProfilePage() {
   const { user } = AUTH_STORE;
   const { userProfile, getUser, userPosts, getUserPosts } = USER_STORE;
   useEffect(() => {
-    getUser(user._id);
+    getUser(user._id, true);
   }, []);
 
   useEffect(() => {
     getUserPosts(user._id);
   }, []);
+  console.log(userPosts);
+
+  const [follow, setFollow] = useState(false);
 
   return (
     <>
       <Layout>
-        <div className="profile-page">{userProfile.name}</div>
         <div className="first-div-profile-page">
           <div className="profile-page-header">
             <div className="profile-page-header-img">
@@ -44,6 +46,8 @@ function ProfilePage() {
               <p>Followed</p>
             </div>
           </div>
+          <div className="profile-page">{userProfile.name}</div>
+
           <div className="div-info-sobre">
             <div className="profile-page-name">{userProfile.biography}</div>
           </div>

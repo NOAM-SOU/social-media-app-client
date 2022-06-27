@@ -12,6 +12,7 @@ import MyContext from "./Context/MyContext";
 import { useState } from "react";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import PopUpOut from "./Components/PopUp/PopUpOut";
+import UserPage from "./Pages/UserPage/UserPage";
 
 function App() {
   const { isUserLoggedIn } = AUTH_STORE;
@@ -51,6 +52,7 @@ function App() {
               path="/"
               element={isUserLoggedIn ? <Home /> : <Navigate to="login" />}
             />
+            <Route path="/:userId" element={<UserPage />} />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

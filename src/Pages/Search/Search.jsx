@@ -1,4 +1,5 @@
 import { observer } from "mobx-react";
+import FormSearch from "../../Components/FormSearch/FormSearch";
 import Layout from "../../Components/Layout/Layout";
 
 function Search() {
@@ -6,6 +7,7 @@ function Search() {
     <Layout>
       <div>
         <h1>Search</h1>
+        <FormSearch />
       </div>
     </Layout>
   );

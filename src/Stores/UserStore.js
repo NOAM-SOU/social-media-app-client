@@ -7,7 +7,7 @@ import {
 } from "mobx";
 import userApi from "../Apis/UserApi";
 
-class AuthStore {
+class UserStore {
   /**
    * @private
    * @type {object}
@@ -17,10 +17,19 @@ class AuthStore {
     errorStatus: 0,
     userPosts: [],
     usersPosts: [],
+    allUsers: [],
+    another: {},
   };
 
   get userProfile() {
     return this.session.userProfile;
+  }
+  get another() {
+    return this.session.another;
+  }
+
+  get allUsers() {
+    return this.session.allUsers;
   }
 
   get errorStatus() {
@@ -42,16 +51,19 @@ class AuthStore {
       errorStatus: computed,
       userPosts: computed,
       usersPosts: computed,
+      allUsers: computed,
+      another: computed,
       getUser: action.bound,
       getFollowedPosts: action.bound,
     });
   }
 
-  async getUser(userId) {
+  async getUser(userId, boolean) {
     try {
       const data = await userApi.getUser(userId);
       runInAction(() => {
-        this.session.userProfile = data;
+        if (boolean) this.session.userProfile = data;
+        else this.session.another = data;
       });
     } catch (err) {
       runInAction(() => {
@@ -61,7 +73,18 @@ class AuthStore {
     }
   }
 
-  async getFollowedPosts(userId) {
+  getAllUsers = async () => {
+    try {
+      const data = await userApi.getAllUsers();
+      runInAction(() => {
+        this.session.allUsers = data;
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  getFollowedPosts = async (userId) => {
     try {
       const res = await userApi.followedPosts(userId);
       runInAction(() => {
@@ -72,9 +95,9 @@ class AuthStore {
         console.log(err);
       });
     }
-  }
+  };
 
-  async getUserPosts(userId) {
+  getUserPosts = async (userId) => {
     try {
       const res = await userApi.getUserPosts(userId);
       runInAction(() => {
@@ -85,9 +108,9 @@ class AuthStore {
         console.log(err);
       });
     }
-  }
+  };
 
-  async addPost(post, userId) {
+  addPost = async (post, userId) => {
     try {
       const res = await userApi.addPost(post, userId);
       console.log(res);
@@ -99,8 +122,24 @@ class AuthStore {
         console.log(err);
       });
     }
-  }
+  };
+
+  deletePost = async (userId, postId) => {
+    try {
+      const res = await userApi.deletePost(userId, postId);
+      console.log("userId", userId, "postId", postId);
+      console.log(res);
+      runInAction(() => {
+        this.session.userProfile = res;
+        // this.session.userPosts.filter((post) => post._id !== postId);
+      });
+    } catch (err) {
+      runInAction(() => {
+        console.log(err);
+      });
+    }
+  };
 }
 
-const authStore = new AuthStore();
-export default authStore;
+const userStore = new UserStore();
+export default userStore;

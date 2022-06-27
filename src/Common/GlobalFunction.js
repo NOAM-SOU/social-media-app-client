@@ -6,7 +6,7 @@ import { runInAction } from "mobx";
  * @param {string} path
  * @param {string} params
  */
-export async function getFunction(path, params) {
+export async function getFunction(path, params = "") {
   const res = await api.get(`${path}/${params}`);
   return res.data;
 }
@@ -19,6 +19,16 @@ export async function getFunction(path, params) {
  */
 export async function postFunction(path, params, data) {
   const res = await api.post(`${path}/${params}`, data);
+  return res.data;
+}
+
+/**
+ *
+ * @param {string} path
+ * @param {string} params
+ */
+export async function deleteFunction(path, params) {
+  const res = await api.delete(`${path}/${params}`);
   return res.data;
 }
 

@@ -27,7 +27,6 @@ function NewPost() {
         validationSchema={validationSchemaPost}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           await addPost(values, user._id);
-          console.log("nononon");
           await resetForm();
           navigate("/profilepage");
 

@@ -1,8 +1,16 @@
-import { getFunction, postFunction } from "../Common/GlobalFunction";
+import {
+  deleteFunction,
+  getFunction,
+  postFunction,
+} from "../Common/GlobalFunction";
 
 class UserApi {
   async getUser(userId) {
     return await getFunction("follow/getuser", userId);
+  }
+
+  async getAllUsers() {
+    return await getFunction("follow/getall");
   }
 
   async followedPosts(userId) {
@@ -17,8 +25,8 @@ class UserApi {
     return await postFunction(`post/addnewpost`, userId, post);
   }
 
-  async deletePost(postId, userId) {
-    return await getFunction("post/deletepost", `${userId}/${postId}`);
+  async deletePost(userId, postId) {
+    return await deleteFunction("post/deletepost", `${userId}/${postId}`);
   }
 }
 

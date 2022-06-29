@@ -1,35 +1,13 @@
 .first-div-home {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  background-color: #ece4e4; 
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  margin-top: 20%;
-  height: 100%;
-  /* overflow: hidden; */
+  /* border: 1px solid lightblue; */
+  height: 90%;
 }
 
 .div-home-wellcome {
-  background-color: #b15f5f;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
 }
 
-/* .div-posts-home-original {
-  background-color: #0cad7d;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
+.div-posts-home-original {
 }
 
 .div-posts-home {
-  background-color: #0cad7d;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
-} 
+}

@@ -25,28 +25,39 @@ function FormSearch() {
   return (
     <div className="formsearch-first-div">
       <div className="formsearch-deiv-input">
-        <AiOutlineSearch />
         <input
+          id="input-search-form"
           placeholder="Search"
           onChange={(e) => {
             setValue(e.target.value);
             search();
           }}
         />
+        {/* <AiOutlineSearch /> */}
       </div>
       <div className="formsearch-results-div">
-        {result.length === 0
-          ? "No users"
-          : result.map((u) => {
-              return (
-                <div className="formsearch-result-ul">
-                  <Link to={`/${u._id}`}>
-                    <div className="formsearch-result-img">{u.profileImg}</div>
-                    <div>{u.name}</div>
-                  </Link>
-                </div>
-              );
-            })}
+        {value.length === 0 ? (
+          <div className="div-no-results">No searches</div>
+        ) : result.length === 0 ? (
+          <div className="div-no-results">No users</div>
+        ) : (
+          result.map((u) => {
+            return (
+              <div className="formsearch-result-ul">
+                <Link to={`/${u._id}`}>
+                  <div className="div-img-result-searchform">
+                    <img
+                      className="formsearch-result-img"
+                      src={u.profileImg}
+                      alt="post"
+                    />
+                  </div>
+                  <div className="div-name-formsearch">{u.name}</div>
+                </Link>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

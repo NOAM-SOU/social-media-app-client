@@ -46,7 +46,7 @@ function ProfilePage() {
               <p>Followed</p>
             </div>
           </div>
-          <div className="profile-page">{userProfile.name}</div>
+          <div className="profile-page-username">{userProfile.name}</div>
 
           <div className="div-info-sobre">
             <div className="profile-page-name">{userProfile.biography}</div>
@@ -55,7 +55,11 @@ function ProfilePage() {
             {userPosts.length === 0
               ? "No posts"
               : userPosts.map((p) => {
-                  return <Post p={p} key={p._id} />;
+                  return (
+                    <div key={p._id} className="posts-img-profilepage">
+                      <img src={p.img} alt="img" className="img-post-profile" />
+                    </div>
+                  );
                 })}
           </div>
         </div>

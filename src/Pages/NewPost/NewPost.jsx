@@ -10,6 +10,7 @@ import {
 import CustomInput from "../../Components/FormTools/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../Components/Layout/Layout";
+import "./NewPost.css";
 
 const { USER_STORE, AUTH_STORE } = rootStores;
 
@@ -36,12 +37,13 @@ function NewPost() {
         {(props) => (
           <Form>
             <div className="div-form-newpost-container">
-              <label htmlFor="file-input">
+              <label className="label-newpost" htmlFor="file-input">
                 <img src={img} className="social-postimg-media" />
                 <CustomInput
                   name="img"
                   type="file"
                   accept="image/*"
+                  id="input-img-newstyle"
                   onChange={(e) => {
                     console.log(e.target.value);
                     props.setFieldValue("img", e.target.value);
@@ -50,14 +52,20 @@ function NewPost() {
                   }}
                 />
               </label>
-              <CustomInput name="title" placeholder="Title" />
-              <CustomInput name="content" placeholder="Content" />
+              <div className="inputs-newpost-social">
+                <CustomInput
+                  id="newpost-social-newstyle"
+                  name="title"
+                  placeholder="Title"
+                />
+                <CustomInput name="content" placeholder="Content" />
+              </div>
               <button
                 type="submit"
                 id="button-sub-post-form"
                 disabled={!props.dirty || !props.isValid}
               >
-                {props.isSubmitting ? "loading..." : "add post"}
+                {props.isSubmitting ? "loading..." : "Add post"}
               </button>
             </div>
           </Form>

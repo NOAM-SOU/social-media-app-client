@@ -1,6 +1,6 @@
 import { useField } from "formik";
 import { observer } from "mobx-react";
-// import "./CustomInput.css";
+import "./CustomInput.css";
 
 function CustomInput(props) {
   const [field, meta] = useField(props);

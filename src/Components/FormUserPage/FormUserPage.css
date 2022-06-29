@@ -1,14 +1,90 @@
 .formuserpage-first-div {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.formuserpage-header-div {
+.user-page-header {
+  display: flex;
+  height: 15%;
+  margin-top: 5%;
+  width: 100%;
+  align-items: center;
+  /* border: 1px solid red; */
 }
 
-.formuserpage-infomation-div {
+.user-page-header-img {
+  width: 25%;
+  /* border: solid 1px pink; */
 }
 
-.formuserpage-btn-follow {
+#img-user-page {
+  border-radius: 15%;
+  width: 70%;
+  height: 70%;
 }
 
-.formuserpage-posts-div {
+.user-page-header-postnumber {
+  width: 25%;
+  /* border: solid 1px pink; */
+  font-size: small;
+}
+
+.user-page-header-followersnumber {
+  width: 25%;
+  /* border: solid 1px pink; */
+  font-size: small;
+}
+
+.user-page-header-followednumber {
+  width: 25%;
+  /* border: solid 1px pink; */
+  font-size: small;
+}
+
+.user-page-username {
+  width: 100%;
+  height: 2%;
+  /* border: solid 1px rgb(33, 201, 55); */
+  text-align: left;
+  padding-left: 12%;
+  font-size: medium;
+}
+
+.div-info-sobre {
+  width: 100%;
+  height: 2%;
+  /* border: solid 1px rgb(33, 50, 201); */
+  text-align: left;
+  padding-left: 12%;
+  font-size: medium;
+}
+
+.user-page-name {
+}
+
+.user-page-posts {
+  display: flex;
+  /* justify-items: flex-start; */
+  flex-wrap: wrap;
+  margin-top: 15%;
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 81%;
+  /* border: 1px solid orange; */
+  width: 100%;
+  overflow: hidden;
+}
+
+.posts-img-userpage {
+  width: 25%;
+  height: 20%;
+  /* border: 1px solid rgb(22, 224, 224); */
+}
+
+.img-post-user {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid rgb(228, 109, 129); */
 }

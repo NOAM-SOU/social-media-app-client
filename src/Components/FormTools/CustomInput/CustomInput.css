@@ -1,6 +1,8 @@
 .social-custominput-media {
-  /* width: 100%;
+  width: 80%;
+  height: 10%;
   margin-top: 10%;
-  border-radius: 10px;
-  border: none; */
+  outline: none;
+  padding-left: 2%;
+  border: 3px solid rgb(232 124 231);
 }

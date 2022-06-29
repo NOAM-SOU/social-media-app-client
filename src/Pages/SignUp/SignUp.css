@@ -1,32 +1,32 @@
 .social-signup-media {
-  border: 1px solid #f13838;
+  /* border: 1px solid #f13838;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .social-signup-img-media {
-  border: 1px solid #43f12b;
-  margin-top: 20%;
+  /* border: 1px solid #43f12b;
+  margin-top: 20%; */
 }
 
 .social-profileimg-media {
-  border: 1px solid #2b6af1;
+  /* border: 1px solid #2b6af1;
   border-radius: 60%;
-  width: 40%;
+  width: 40%; */
 }
 
 .social-signup-form-media {
-  border: 1px solid #16eaf1;
+  /* border: 1px solid #16eaf1;
   margin-top: 15%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .image-upload > input {
-  display: none;
+  /* display: none; */
 }

@@ -1,12 +1,12 @@
 import { observer } from "mobx-react";
 import FormSearch from "../../Components/FormSearch/FormSearch";
 import Layout from "../../Components/Layout/Layout";
+import "./Search.css";
 
 function Search() {
   return (
     <Layout>
-      <div>
-        <h1>Search</h1>
+      <div className="first-div-search-page">
         <FormSearch />
       </div>
     </Layout>

@@ -1,10 +1,12 @@
-.social-signup-media {
-  /* border: 1px solid blue; */
+.social-login-media {
   height: 100vh;
+  /* border: 1px solid red; */
 }
 
-.signup-div-well {
-  height: 6%;
+.social-login-well-media {
+  /* border: 1px solid rgb(35, 46, 43); */
+  height: 10%;
+  padding-top: 8%;
   font-family: "Carter One", cursive;
   font-family: "Heebo", sans-serif;
   font-family: "Oleo Script Swash Caps", cursive;
@@ -13,17 +15,10 @@
   font-family: "Permanent Marker", cursive;
   background-color: rgb(232 124 231);
   font-size: xx-large;
-}
-.social-signup-img-media {
-}
-
-.social-profileimg-media {
+  margin-top: 10%;
 }
 
-.social-signup-form-media {
-  height: 94%;
-  /* border: 1px solid red; */
-}
-
-.image-upload > input {
+.social-login-form-media {
+  /* border: 1px solid rgb(0, 255, 13); */
+  height: 70%;
 }

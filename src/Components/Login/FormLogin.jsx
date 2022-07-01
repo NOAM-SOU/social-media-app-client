@@ -7,6 +7,8 @@ import {
 } from "../FormTools/FormValidation";
 import rootStores from "../../Stores/main";
 import { AuthError } from "../FormTools/Errors";
+import "./FormLogin.css";
+import { Link } from "react-router-dom";
 
 const { AUTH_STORE } = rootStores;
 function FormLogin() {
@@ -22,7 +24,7 @@ function FormLogin() {
       }}
     >
       {(props) => (
-        <Form>
+        <Form className="first-div-form-formlogin">
           <div className="div-form-login-container">
             <CustomInput name="email" placeholder="email" />
             <CustomInput
@@ -39,6 +41,9 @@ function FormLogin() {
             >
               {props.isSubmitting ? "loading..." : "login"}
             </button>
+            <div className="login-linkto-registr">
+              Don't have an account? <Link to="/register">Sign Up</Link>
+            </div>
           </div>
         </Form>
       )}

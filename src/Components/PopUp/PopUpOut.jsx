@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 import rootStore from "../../Stores/main";
+import "./PopUpOut.css";
 
 const { AUTH_STORE } = rootStore;
 

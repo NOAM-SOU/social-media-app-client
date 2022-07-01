@@ -6,7 +6,7 @@ import {
   initialValuesRegister,
   validationSchemaRegister,
 } from "../FormTools/FormValidation";
-// import "./FormSignUp.css";
+import "./FormSignUp.css";
 import rootStores from "../../Stores/main";
 import { useState } from "react";
 import imageHandler from "../FormTools/ValidationLogic";
@@ -31,45 +31,60 @@ function FormSignUp() {
       }}
     >
       {(props) => (
-        <Form>
+        <Form className="div-form-principal-signup">
           <div className="div-form-register-container">
             <div className="image-upload">
-              <label htmlFor="file-input">
-                <img src={profileImg} className="social-profileimg-media" />
-                <CustomInput
-                  name="profileIng"
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    props.setFieldValue("profileImg", e.target.value);
-                    imageHandler(e, setProfileImg);
-                    console.log("img", profileImg);
-                  }}
-                />
-              </label>
+              <img src={profileImg} className="social-profileimg-media" />
+              <CustomInput
+                id="input-upload-signupform"
+                name="profileIng"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  props.setFieldValue("profileImg", e.target.value);
+                  imageHandler(e, setProfileImg);
+                  console.log("img", profileImg);
+                }}
+              />
             </div>
-            <CustomInput name="name" placeholder="Name" />
-            <CustomInput name="email" placeholder="email" />
-            <CustomInput name="biography" placeholder="Biography" />
-            <CustomInput
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
-            <CustomInput
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm password"
-            />
+            <div className="div-inputs-formsignup">
+              <CustomInput
+                name="name"
+                placeholder="Name"
+                className="signupform-input"
+              />
+              <CustomInput
+                name="email"
+                placeholder="email"
+                className="signupform-input"
+              />
+              <CustomInput
+                name="biography"
+                placeholder="Biography"
+                className="signupform-input"
+              />
+              <CustomInput
+                name="password"
+                type="password"
+                placeholder="Password"
+                className="signupform-input"
+              />
+              <CustomInput
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm password"
+                className="signupform-input"
+              />
 
-            <AuthError status={errorStatus} />
-            <button
-              type="submit"
-              id="button-sub-register-form"
-              disabled={!props.dirty || !props.isValid}
-            >
-              {props.isSubmitting ? "loading..." : "sign up"}
-            </button>
+              <AuthError status={errorStatus} />
+              <button
+                type="submit"
+                id="button-sub-register-form"
+                disabled={!props.dirty || !props.isValid}
+              >
+                {props.isSubmitting ? "loading..." : "sign up"}
+              </button>
+            </div>
           </div>
         </Form>
       )}

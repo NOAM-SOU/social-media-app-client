@@ -49,6 +49,11 @@ function PostPage() {
               <CgBookmark className="bookmark-icon-postpage" />
             </div>
           </div>
+          <div className="div-num-likes">{post.numberOfLikes} Likes</div>
+          <div className="div-info-postpage">
+            <div className="div-info-postpage-name">{another.name}</div>
+            <div className="div-info-postpage-content">{post.content}</div>
+          </div>
         </div>
       </Layout>
     </>

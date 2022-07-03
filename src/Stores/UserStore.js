@@ -20,6 +20,7 @@ class UserStore {
     allUsers: [],
     another: {},
     anotherPosts: [],
+    post: {},
   };
 
   get userProfile() {
@@ -31,6 +32,10 @@ class UserStore {
 
   get anotherPosts() {
     return this.session.anotherPosts;
+  }
+
+  get post() {
+    return this.session.post;
   }
 
   get allUsers() {
@@ -59,8 +64,15 @@ class UserStore {
       allUsers: computed,
       another: computed,
       anotherPosts: computed,
+      post: computed,
       getUser: action.bound,
       getFollowedPosts: action.bound,
+      getAllUsers: action.bound,
+      getUserPosts: action.bound,
+      getAnotherPosts: action.bound,
+      addPost: action.bound,
+      getPost: action.bound,
+      deletePost: action.bound,
     });
   }
 
@@ -151,6 +163,19 @@ class UserStore {
       runInAction(() => {
         this.session.userProfile = res;
         // this.session.userPosts.filter((post) => post._id !== postId);
+      });
+    } catch (err) {
+      runInAction(() => {
+        console.log(err);
+      });
+    }
+  };
+  getPost = async (postId) => {
+    try {
+      const res = await userApi.getPost(postId);
+      runInAction(() => {
+        this.session.post = res;
+        console.log(res);
       });
     } catch (err) {
       runInAction(() => {

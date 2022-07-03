@@ -28,6 +28,10 @@ class UserApi {
   async deletePost(userId, postId) {
     return await deleteFunction("post/deletepost", `${userId}/${postId}`);
   }
+
+  async getPost(postId) {
+    return await getFunction("post/getpost", postId);
+  }
 }
 
 const userApi = new UserApi();

@@ -4,6 +4,7 @@ import Layout from "../../Components/Layout/Layout";
 import rootStore from "../../Stores/main";
 import Post from "../../Components/Post/Post";
 import "./ProfilePage.css";
+import { Link } from "react-router-dom";
 
 const { AUTH_STORE, USER_STORE } = rootStore;
 
@@ -56,9 +57,19 @@ function ProfilePage() {
               ? "No posts"
               : userPosts.map((p) => {
                   return (
-                    <div key={p._id} className="posts-img-profilepage">
-                      <img src={p.img} alt="img" className="img-post-profile" />
-                    </div>
+                    <Link
+                      to={`/postpage/${p._id}`}
+                      key={p._id}
+                      className="link-profilePage-post"
+                    >
+                      <div className="posts-img-profilepage">
+                        <img
+                          src={p.img}
+                          alt="img"
+                          className="img-post-profile"
+                        />
+                      </div>
+                    </Link>
                   );
                 })}
           </div>

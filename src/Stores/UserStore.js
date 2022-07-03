@@ -19,6 +19,7 @@ class UserStore {
     usersPosts: [],
     allUsers: [],
     another: {},
+    anotherPosts: [],
   };
 
   get userProfile() {
@@ -26,6 +27,10 @@ class UserStore {
   }
   get another() {
     return this.session.another;
+  }
+
+  get anotherPosts() {
+    return this.session.anotherPosts;
   }
 
   get allUsers() {
@@ -53,6 +58,7 @@ class UserStore {
       usersPosts: computed,
       allUsers: computed,
       another: computed,
+      anotherPosts: computed,
       getUser: action.bound,
       getFollowedPosts: action.bound,
     });
@@ -102,6 +108,19 @@ class UserStore {
       const res = await userApi.getUserPosts(userId);
       runInAction(() => {
         this.session.userPosts = res;
+      });
+    } catch (err) {
+      runInAction(() => {
+        console.log(err);
+      });
+    }
+  };
+
+  getAnotherPosts = async (userId) => {
+    try {
+      const res = await userApi.getUserPosts(userId);
+      runInAction(() => {
+        this.session.anotherPosts = res;
       });
     } catch (err) {
       runInAction(() => {

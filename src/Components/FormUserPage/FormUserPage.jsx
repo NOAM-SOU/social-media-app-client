@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import rootStores from "../../Stores/main";
 import "./FormUserPage.css";
 
@@ -53,9 +53,15 @@ function FormUserPage() {
           ? "No posts"
           : anotherPosts.map((p) => {
               return (
-                <div key={p._id} className="posts-img-userpage">
-                  <img src={p.img} alt="img" className="img-post-user" />
-                </div>
+                <Link
+                  to={`/postpage/${p._id}`}
+                  key={p._id}
+                  className="link-profilePage-post"
+                >
+                  <div className="posts-img-userpage">
+                    <img src={p.img} alt="img" className="img-post-user" />
+                  </div>
+                </Link>
               );
             })}
       </div>

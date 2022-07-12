@@ -92,6 +92,11 @@
   overflow: hidden;
 }
 
+.link-profilePage-post {
+  width: 25%;
+  height: 20%;
+}
+
 .posts-img-userpage {
   width: 25%;
   height: 20%;

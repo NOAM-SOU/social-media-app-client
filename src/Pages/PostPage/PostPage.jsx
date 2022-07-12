@@ -1,4 +1,5 @@
 import { observer } from "mobx-react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { CgBookmark, CgHeart } from "react-icons/cg";
 import { FaRegComment } from "react-icons/fa";
@@ -11,7 +12,9 @@ const { AUTH_STORE, USER_STORE } = rootStore;
 
 function PostPage() {
   const { postId } = useParams();
-  const { getPost, post, getUser, another } = USER_STORE;
+  const { getPost, post, getUser, another, addLike } = USER_STORE;
+  const { user } = AUTH_STORE;
+
   console.log(postId);
 
   useEffect(() => {
@@ -21,6 +24,8 @@ function PostPage() {
   useEffect(() => {
     getPost(postId);
   }, []);
+
+  const [like, setLike] = useState(false);
 
   return (
     <>
@@ -41,7 +46,13 @@ function PostPage() {
           </div>
           <div className="div-icons-postpage">
             <div className="postpage-icons-rest">
-              <CgHeart className="heart-icon-postpage" />
+              <CgHeart
+                className={like ? "heart-icon-like" : "heart-icon-postpage"}
+                onClick={() => {
+                  addLike(user._id, post._id);
+                  setLike(true);
+                }}
+              />
               <FaRegComment className="comment-icon-postpage" />
             </div>
 

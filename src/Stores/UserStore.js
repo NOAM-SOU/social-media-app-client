@@ -183,6 +183,20 @@ class UserStore {
       });
     }
   };
+
+  addLike = async (userId, postId) => {
+    try {
+      const res = await userApi.addLike(userId, postId);
+      runInAction(() => {
+        this.session.post = res;
+        console.log(res);
+      });
+    } catch (err) {
+      runInAction(() => {
+        console.log(err);
+      });
+    }
+  };
 }
 
 const userStore = new UserStore();

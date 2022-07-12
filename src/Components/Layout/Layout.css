@@ -4,21 +4,33 @@
   max-width: 100%;
   /* border: 1px solid yellow; */
 }
-.header-layout {
+
+.father-header-layout {
+  display: flex;
   /* border: 1px solid greenyellow; */
   height: 5vh;
+  justify-content: space-between;
+
+  background-color: rgb(232 124 231);
+}
+.header-layout {
   font-size: 150%;
   padding-left: 5%;
-  text-align: left;
+  /* text-align: left; */
+  padding-top: 1%;
   font-family: "Carter One", cursive;
   font-family: "Heebo", sans-serif;
   font-family: "Oleo Script Swash Caps", cursive;
   font-family: "Pacifico", cursive;
   font-family: "Patrick Hand", cursive;
   font-family: "Permanent Marker", cursive;
-  background-color: rgb(232 124 231);
 }
 
+.goback-layout-icon {
+  padding-right: 5%;
+  font-size: xx-large;
+  padding-top: 1%;
+}
 .home-div-icons {
   /* border: 1px solid rgb(37, 37, 35); */
   height: 5vh;

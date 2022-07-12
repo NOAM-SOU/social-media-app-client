@@ -65,6 +65,12 @@
   margin-right: 20%;
 }
 
+.heart-icon-like {
+  height: 100%;
+  width: 30%;
+  margin-right: 20%;
+  background-color: rgb(236, 35, 35);
+}
 .comment-icon-postpage {
   height: 100%;
   width: 30%;

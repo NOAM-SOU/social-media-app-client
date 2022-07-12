@@ -32,6 +32,9 @@ class UserApi {
   async getPost(postId) {
     return await getFunction("post/getpost", postId);
   }
+  async addLike(userId, postId) {
+    return await getFunction(`like/addlike`, userId, postId);
+  }
 }
 
 const userApi = new UserApi();

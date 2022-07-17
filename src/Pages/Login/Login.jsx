@@ -1,6 +1,5 @@
 import FormLogin from "../../Components/Login/FormLogin";
 import { observer } from "mobx-react";
-import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {

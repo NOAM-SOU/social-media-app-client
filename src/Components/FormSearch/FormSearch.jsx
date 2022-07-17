@@ -1,5 +1,4 @@
 import { observer } from "mobx-react";
-import { AiOutlineSearch } from "react-icons/ai";
 import rootStores from "../../Stores/main";
 import "./FormSearch.css";
 import { useEffect } from "react";
@@ -33,7 +32,6 @@ function FormSearch() {
             search();
           }}
         />
-        {/* <AiOutlineSearch /> */}
       </div>
       <div className="formsearch-results-div">
         {value.length === 0 ? (

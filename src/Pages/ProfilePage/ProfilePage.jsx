@@ -2,7 +2,6 @@ import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import Layout from "../../Components/Layout/Layout";
 import rootStore from "../../Stores/main";
-import Post from "../../Components/Post/Post";
 import "./ProfilePage.css";
 import { Link } from "react-router-dom";
 
@@ -21,7 +20,6 @@ function ProfilePage() {
   console.log(userPosts);
 
   const [follow, setFollow] = useState(false);
-
   return (
     <>
       <Layout>

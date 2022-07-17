@@ -13,11 +13,7 @@ const { AUTH_STORE } = rootStore;
 function Post(props) {
   const [showDel, setShowDel] = useState(false);
   const [id, setId] = useState("");
-
   const { user } = AUTH_STORE;
-
-  // console.log(props.p._id, props.p.title);
-
   return (
     <>
       <div className="first-post-div">

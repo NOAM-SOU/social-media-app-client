@@ -1,4 +1,4 @@
-import FormLogin from "../Login/index";
+import FormLogin from "../../Components/Login/FormLogin";
 import { observer } from "mobx-react";
 import "./Login.css";
 

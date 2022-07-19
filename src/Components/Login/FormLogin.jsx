@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { Formik, Form } from "formik";
-import CustomInput from "../FormTools/CustomInput/CustomInput";
+import CustomInput from "../FormTools/CustomInput";
 import {
   initialValuesLogin,
   validationSchemaLogin,

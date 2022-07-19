@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
-import Layout from "../../Components/Layout/Layout";
+import Layout from "../../Components/Layout";
 import rootStore from "../../Stores/main";
 import "./ProfilePage.css";
 import { Link } from "react-router-dom";

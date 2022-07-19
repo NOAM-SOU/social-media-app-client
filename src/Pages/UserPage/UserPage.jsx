@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
-import FormUserPage from "../../Components/FormUserPage/FormUserPage";
-import Layout from "../../Components/Layout/Layout";
+import FormUserPage from "../../Components/FormUserPage";
+import Layout from "../../Components/Layout";
 import "./UserPage.css";
 
 function UserPage() {

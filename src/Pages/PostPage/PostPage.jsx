@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { CgBookmark, CgHeart } from "react-icons/cg";
 import { FaRegComment } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
-import Layout from "../../Components/Layout/Layout";
+import Layout from "../../Components/Layout";
 import rootStore from "../../Stores/main";
 import "./PostPage.css";
 

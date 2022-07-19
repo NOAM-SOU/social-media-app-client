@@ -1,9 +1,9 @@
 import { observer } from "mobx-react";
 import rootStore from "../../Stores/main";
-import Layout from "../../Components/Layout/Layout";
+import Layout from "../../Components/Layout";
 import MyContext from "../../Context/MyContext";
 import "./Home.css";
-import Posts from "../../Components/Posts/Posts";
+import Posts from "../../Components/Posts";
 import { useContext } from "react";
 
 const { AUTH_STORE } = rootStore;

@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Formik, Form } from "formik";
-import CustomInput from "../FormTools/CustomInput/CustomInput";
+import CustomInput from "../FormTools/CustomInput";
 import {
   initialValuesRegister,
   validationSchemaRegister,

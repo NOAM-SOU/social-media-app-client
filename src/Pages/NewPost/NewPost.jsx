@@ -7,9 +7,9 @@ import {
   initialValueszPost,
   validationSchemaPost,
 } from "../../Components/FormTools/FormValidation";
-import CustomInput from "../../Components/FormTools/CustomInput/CustomInput";
+import CustomInput from "../../Components/FormTools/CustomInput";
 import { useNavigate } from "react-router-dom";
-import Layout from "../../Components/Layout/Layout";
+import Layout from "../../Components/Layout";
 import "./NewPost.css";
 
 const { USER_STORE, AUTH_STORE } = rootStores;

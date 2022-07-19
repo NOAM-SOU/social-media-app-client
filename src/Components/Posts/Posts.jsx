@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import { useEffect } from "react";
-import Post from "../../Components/Post/Post";
+import Post from "../../Components/Post";
 import rootStore from "../../Stores/main";
 const { AUTH_STORE, USER_STORE } = rootStore;
 // import "./Posts.css";

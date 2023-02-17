@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import rootStores from "../../Stores/main";
+import { rootStores } from "../../Stores/main";
 import "./FormUserPage.css";
 
 const { USER_STORE } = rootStores;

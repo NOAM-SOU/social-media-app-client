@@ -33,7 +33,7 @@ class UserApi {
     return await getFunction("post/getpost", postId);
   }
   async addLike(userId, postId) {
-    return await getFunction(`like/addlike`, userId, postId);
+    return await getFunction(`like/addlike`, `${userId}/${postId}`);
   }
 }
 

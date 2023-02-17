@@ -1,4 +1,4 @@
-import api from "../Apis/api";
+import { api } from "../Apis/api";
 import { runInAction } from "mobx";
 
 /**

@@ -79,6 +79,7 @@ class UserStore {
   async getUser(userId, boolean) {
     try {
       const data = await userApi.getUser(userId);
+      console.log("store data", data);
       runInAction(() => {
         if (boolean) this.session.userProfile = data;
         else this.session.another = data;

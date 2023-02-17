@@ -1,28 +1,28 @@
-import { observer } from "mobx-react";
-import rootStore from "../../Stores/main";
-import Layout from "../../Components/Layout";
-import MyContext from "../../Context/MyContext";
-import "./Home.css";
-import Posts from "../../Components/Posts";
-import { useContext } from "react";
+// import { observer } from "mobx-react";
+// import { rootStores } from "../../Stores/main";
+// import Layout from "../../Components/Layout/Layout";
+// import MyContext from "../../Context/MyContext";
+// import "./Home.css";
+// import Posts from "../../Components/Posts";
+// import { useContext } from "react";
 
-const { AUTH_STORE } = rootStore;
+// const { authStore } = rootStores;
 
-const Home = () => {
-  const { setShow, show } = useContext(MyContext);
+// const Home = () => {
+//   const { setShow, show } = useContext(MyContext);
 
-  const { user } = AUTH_STORE;
+//   const { user } = authStore;
 
-  return (
-    <>
-      <Layout>
-        <div className="first-div-home">
-          <div className="div-home-wellcome">Wellcome {user.name}</div>
-          <Posts />
-        </div>
-      </Layout>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <Layout>
+//         <div className="first-div-home">
+//           <div className="div-home-wellcome">Wellcome {user.name}</div>
+//           <Posts />
+//         </div>
+//       </Layout>
+//     </>
+//   );
+// };
 
-export default observer(Home);
+// export default observer(Home);

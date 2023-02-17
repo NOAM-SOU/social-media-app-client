@@ -1,6 +1,7 @@
 import FormSignUp from "../../Components/SignUp/FormSignUp";
 import { observer } from "mobx-react";
 import "./SignUp.css";
+import React from "react";
 
 function SignUp() {
   return (

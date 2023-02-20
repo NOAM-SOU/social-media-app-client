@@ -1,8 +1,8 @@
 import { UserI } from "../interfaces/user";
-import { loginApi } from "./api";
+import { loginApi, registerApi } from "./api";
 class AuthApi {
   signUp = async (user: UserI | FormData) => {
-    const res = await loginApi.post("/register", user);
+    const res = await registerApi.post("/register", user);
     return res.data;
   };
 
@@ -12,8 +12,10 @@ class AuthApi {
   };
 
   login = async (user: UserI) => {
+    console.log(user);
+
     const res = await loginApi.post("/login", user);
-    return res;
+    return res.data;
   };
 }
 

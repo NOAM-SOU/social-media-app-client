@@ -5,7 +5,7 @@ import CustomInput from "../FormTools/CustomInput/CustomInput";
 import {
   initialValuesRegister,
   validationSchemaRegister,
-} from "../FormTools/FormValidation";
+} from "../FormTools/formValidation/registerValidation";
 import "./FormSignUp.css";
 import { rootStores } from "../../Stores/main";
 import { useState } from "react";
@@ -15,6 +15,8 @@ import {
   readerFile,
 } from "../FormTools/ValidationLogic";
 import _ from "lodash";
+import { AuthError } from "../FormTools/Errors";
+import { Link } from "react-router-dom";
 // import AuthError from "../FormTools/Errors";
 
 const { authStore } = rootStores;
@@ -118,7 +120,7 @@ function FormSignUp() {
                 onChange={props.handleChange}
               />
 
-              {/* <AuthError status={errorStatus} /> */}
+              <AuthError code={errorStatus.code} error={errorStatus.error} />
               <button
                 type="submit"
                 id="button-sub-register-form"
@@ -126,6 +128,9 @@ function FormSignUp() {
               >
                 {props.isSubmitting ? "loading..." : "sign up"}
               </button>
+              <div className="register-linkto-login">
+                Already have an account? <Link to="/login">Login</Link>
+              </div>
             </div>
           </div>
         </Form>

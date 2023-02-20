@@ -1,6 +1,6 @@
 import * as Yup from "yup";
-import { RegisterVales } from "../../interfaces/registerValues";
-import profileimg from "./profileimg.png";
+import { RegisterVales } from "../../../interfaces/registerValues";
+import profileimg from "../profileimg.png";
 
 export const initialValuesRegister: RegisterVales = {
   name: "",
@@ -27,25 +27,3 @@ export const validationSchemaRegister = Yup.object().shape({
     .min(2, "Biography must be at least 2 characters"),
   profileImg: Yup.mixed<File>().required("Profile image is required"),
 });
-
-// const initialValuesLogin = {
-//   email: "",
-//   password: "",
-// };
-
-// const validationSchemaLogin = Yup.object({
-//   email: Yup.string().required("Email is required").email("Email is invalid"),
-//   password: Yup.string().required("Password is required"),
-// });
-
-// const initialValueszPost = {
-//   postImg: "",
-//   title: "",
-//   content: "",
-// };
-
-// const validationSchemaPost = Yup.object({
-//   img: Yup.string().required("Post image is required"),
-//   title: Yup.string().required("Title is required"),
-//   content: Yup.string().required("Content is required"),
-// });

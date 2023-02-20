@@ -3,11 +3,18 @@ import axios from "axios";
 export const api = axios.create({
   baseURL: "http://localhost:5000/api",
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
   },
 });
 
 export const loginApi = axios.create({
+  baseURL: "http://localhost:5000/api/user",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export const registerApi = axios.create({
   baseURL: "http://localhost:5000/api/user",
   headers: {
     "Content-Type": "multipart/form-data",

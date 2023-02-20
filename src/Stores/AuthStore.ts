@@ -12,22 +12,18 @@ import { UserI, UserInfo, UserProfile } from "../interfaces/user";
 import { Error } from "../interfaces/error";
 
 class AuthStore {
-  user: UserInfo | null = {
-    name: "",
-    email: "",
-    id: "",
-  };
+  user: UserInfo | null = null;
   userProfile: any = {};
   token: Token = "";
-  errorStatus: Error | {} = {
-    message: "",
+  errorStatus: Error = {
+    error: "",
     code: 0,
   };
-  img: any;
+  img: any = "";
 
-  // get isUserLoggedIn() {
-  //   return this.session.user != null;
-  // }
+  get isUserLoggedIn() {
+    return this.user != null;
+  }
 
   setUser(token: Token) {
     console.log(token);
@@ -41,7 +37,7 @@ class AuthStore {
         this.user = jwtDecode(token);
         console.log(this.user);
 
-        this.errorStatus = {};
+        // this.errorStatus = {};
       }
     });
   }
@@ -65,43 +61,49 @@ class AuthStore {
     try {
       const data = await AuthApi.getUser(userId);
       console.log("data", data.data);
-      this.userProfile = data.data;
+      this.userProfile = data.data.data;
+      this.img = data.data.dataUrl;
       // runInAction(() => {
       //   if (boolean) this.session.userProfile = data;
       //   else this.session.another = data;
       // });
     } catch (err: any) {
-      // runInAction(() => {
-      //   this.errorStatus = err;
-      // });
-      console.log(err);
+      runInAction(() => {
+        // this.errorStatus = data.response.data;
+        // console.log(err.data.code);
+      });
     }
   }
 
-  //   logout() {
-  //     this.setUser(null);
-  //   }
+  logout() {
+    this.setUser(null);
+  }
 
-  //   async login(user) {
-  //     try {
-  //       const data = await AuthApi.login(user);
-  //       this.setUser(data.token);
-  //     } catch (err) {
-  //       runInAction(() => {
-  //         this.session.errorStatus = err.response.data.code;
-  //       });
-  //       console.log(err);
-  //     }
-  //   }
+  async login(user: UserI) {
+    console.log("user", user);
+
+    try {
+      const data = await AuthApi.login(user);
+      console.log("d", data);
+
+      this.setUser(data.token);
+    } catch (err: any) {
+      runInAction(() => {
+        this.errorStatus = err.response.data;
+        console.log("err", err.response.data);
+      });
+    }
+  }
 
   constructor() {
     makeObservable(this, {
       user: observable,
       errorStatus: observable,
       userProfile: observable,
-      // isUserLoggedIn: computed,
-      // login: action.bound,
-      // logout: action.bound,
+      img: observable,
+      isUserLoggedIn: computed,
+      login: action.bound,
+      logout: action.bound,
       getUser: action.bound,
       setUser: action.bound,
       signUp: action.bound,

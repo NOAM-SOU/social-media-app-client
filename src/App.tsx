@@ -12,6 +12,9 @@ import Login from "./Pages/Login/Login";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
+import PostPage from "./Pages/PostPage/PostPage";
+import NewPost from "./Pages/NewPost/NewPost";
+// import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 // import MyContext from "./Context/MyContext";
 // import { useState } from "react";
 // import ProfilePage from "./Pages/ProfilePage/ProfilePage";
@@ -22,7 +25,7 @@ import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 function App() {
   const { authStore, postStore } = rootStores;
   const { getUser, user, userProfile, img, isUserLoggedIn } = authStore;
-  const { getPost, post } = postStore;
+  const { getPost, post, newPost } = postStore;
   // const [show, setShow] = useState(false);
 
   // console.log("pUser", user);
@@ -38,8 +41,8 @@ function App() {
     <div className="App container">
       {/* <SignUp /> */}
       {/* <Login /> */}
-      {/* <button onClick={async () => await getUser(user?.id!)}>getUser</button> */}
-      {/* <button onClick={() => getPost()}>getPost</button>
+      {/* <button onClick={async () => await getUser(user?.id!)}>getUser</button>
+      <button onClick={() => getPost(newPost._id!)}>getPost</button>
 
       <img src={post.img} alt="img"></img>
 
@@ -64,10 +67,10 @@ function App() {
             path="/register"
             element={isUserLoggedIn ? <Navigate to="/" /> : <SignUp />}
           />
-          {/* <Route
+          <Route
             path="/addnew"
             element={isUserLoggedIn ? <NewPost /> : <Navigate to="login" />}
-          /> */}
+          />
           <Route
             path="/profilepage"
             element={isUserLoggedIn ? <ProfilePage /> : <Navigate to="login" />}
@@ -77,10 +80,10 @@ function App() {
             element={isUserLoggedIn ? <Search /> : <Navigate to="login" />}
           /> */}
 
-          {/* <Route path="/:userId" element={<UserPage />} />
+          {/* <Route path="/:userId" element={<UserPage />} /> */}
           <Route path="/postpage/:postId" element={<PostPage />} />
 
-          <Route path="*" element={<Navigate to="/" />} /> */}
+          {/* <Route path="*" element={<Navigate to="/" />} />  */}
         </Routes>
       </BrowserRouter>
       {/* </MyContext.Provider> */}

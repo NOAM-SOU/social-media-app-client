@@ -1,13 +1,14 @@
 // import { observer } from "mobx-react";
-// import rootStores from "../../Stores/main";
+// import { rootStores } from "../../Stores/main";
 // import "./FormSearch.css";
 // import { useEffect } from "react";
 // import { useState } from "react";
 // import { Link } from "react-router-dom";
-// const { USER_STORE } = rootStores;
+// import React from "react";
+// const { userStore } = rootStores;
 
 // function FormSearch() {
-//   const { getAllUsers, allUsers } = USER_STORE;
+//   const { getAllUsers, allUsers } = userStore;
 //   useEffect(() => {
 //     getAllUsers();
 //   }, []);

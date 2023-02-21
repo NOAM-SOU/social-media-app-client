@@ -23,7 +23,6 @@ const Home = () => {
         <div className="first-div-home">
           <div className="div-home-wellcome">Wellcome {user?.name}</div>
           <button onClick={logout}>logout</button>
-          <NewPost />
           {/* <Posts /> */}
         </div>
       </Layout>

@@ -10,20 +10,22 @@ const { authStore, postStore } = rootStores;
 
 function ProfilePage() {
   const { user, userProfile, getUser, img } = authStore;
+  const { getUserPosts, userPosts } = postStore;
   useEffect(() => {
     getUser(user?.id!);
   }, []);
 
-  //   useEffect(() => {
-  //     getUserPosts(user._id);
-  //   }, []);
-  //   console.log(userPosts);
-  console.log(userProfile);
+  useEffect(() => {
+    getUserPosts(user?.id!);
+  }, []);
+  console.log("userPosts", userPosts);
+  //   console.log(userProfile);
 
-  const [follow, setFollow] = useState(false);
+  //   const [follow, setFollow] = useState(false);
   return (
     <>
       <Layout>
+        {/* <button onClick={() => getUserPosts(user?.id!)}>gettt</button> */}
         <div className="first-div-profile-page">
           <div className="profile-page-header">
             <div className="profile-page-header-img">
@@ -47,7 +49,7 @@ function ProfilePage() {
           <div className="div-info-sobre">
             <div className="profile-page-name">{userProfile.biography}</div>
           </div>
-          {/* <div className="profile-page-posts">
+          <div className="profile-page-posts">
             {userPosts.length === 0
               ? "No posts"
               : userPosts.map((p) => {
@@ -67,7 +69,7 @@ function ProfilePage() {
                     </Link>
                   );
                 })}
-          </div> */}
+          </div>
         </div>
       </Layout>
     </>

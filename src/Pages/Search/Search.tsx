@@ -1,6 +1,6 @@
 // import { observer } from "mobx-react";
-// import FormSearch from "../../Components/FormSearch";
-// import Layout from "../../Components/Layout";
+// import FormSearch from "../../Components/FormSearch/FormSearch.js";
+// import Layout from "../../Components/Layout/Layout";
 // import "./Search.css";
 
 // function Search() {

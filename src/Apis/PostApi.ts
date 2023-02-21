@@ -7,7 +7,7 @@ class PostApi {
   }
 
   async getUserPosts(userId: string) {
-    return await api.get(`user/post/new/${userId}`);
+    return await api.get(`/post/new/${userId}`);
   }
 
   async addPost(post: Post | FormData, userId: string) {
@@ -20,8 +20,8 @@ class PostApi {
     return await api.delete(`/post/deletepost${userId}/${postId}`);
   }
 
-  async getPost() {
-    return await api.get(`post/getpost/63f254839d36b002d9f3e865`);
+  async getPost(postId: string) {
+    return await api.get(`/post/getpost/${postId}`);
   }
 }
 

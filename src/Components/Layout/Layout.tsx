@@ -10,10 +10,6 @@ function Layout({ children }: ChildrenProps) {
   const navigate = useNavigate();
   return (
     <div className="firstdiv-layout">
-      <div className="father-header-layout">
-        <div className="header-layout">Dimelo</div>
-      </div>
-
       {children}
       <nav className="navbar">
         <Link className="link-layout-router" to="/">

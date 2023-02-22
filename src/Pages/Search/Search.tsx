@@ -6,11 +6,11 @@ import "./Search.css";
 
 function Search() {
   return (
-    <Layout>
-      <div className="first-div-search-page">
-        <FormSearch />
-      </div>
-    </Layout>
+    // <Layout>
+    <div className="first-div-search-page">
+      <FormSearch />
+    </div>
+    // </Layout>
   );
 }
 

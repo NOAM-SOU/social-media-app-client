@@ -1,5 +1,5 @@
-.first-div-home {
-  /* border: 1px solid lightblue; */
+/* .first-div-home {
+  border: 1px solid lightblue;
   height: 90%;
 }
 
@@ -10,4 +10,25 @@
 }
 
 .div-posts-home {
+} */
+
+/* .posts li {
+  list-style: none;
+} */
+
+/* .posts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+@media screen and (max-width: 768px) {
+  /* Posts */
+  .posts ul {
+    grid-template-columns: 100%;
+  }
+
+  /* .posts li {
+    margin-bottom: 1rem;
+  } */
 }

@@ -1,0 +1,50 @@
+/* Stories */
+.stories {
+  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.stories ul {
+  display: flex;
+  overflow-x: auto;
+  list-style: none;
+  padding: 0;
+}
+
+.stories li {
+  margin-right: 1rem;
+}
+
+.stories a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stories img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #e95950;
+  margin-bottom: 0.5rem;
+}
+
+.stories span {
+  font-size: 0.75rem;
+}
+
+/* Stories */
+.stories ul {
+  margin-bottom: 1rem;
+}
+
+.stories ul::-webkit-scrollbar {
+  display: none;
+}
+
+.stories li {
+  margin-right: 0.5rem;
+}

@@ -6,13 +6,13 @@ import "./UserPage.css";
 
 function UserPage() {
   return (
-    <Layout>
-      <div className="userpage-first-div">
-        <div>
-          <FormUserPage />
-        </div>
+    // <Layout>
+    <div className="userpage-first-div">
+      <div>
+        <FormUserPage />
       </div>
-    </Layout>
+    </div>
+    // </Layout>
   );
 }
 

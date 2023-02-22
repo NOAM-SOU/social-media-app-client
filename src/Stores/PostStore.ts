@@ -22,6 +22,7 @@ class PostStore {
     img: "",
   };
   anotherPosts: Post[] = [];
+  followedPosts: Post[] = [];
 
   addPost = async (post: Post | FormData, userId: string) => {
     try {
@@ -75,16 +76,33 @@ class PostStore {
     }
   };
 
+  getFollowedPosts = async (userId: string) => {
+    try {
+      const res = await postApi.followedPosts(userId);
+      console.log(res.data);
+
+      this.followedPosts = res.data;
+      runInAction(() => {
+        // this.followedPosts = res.data;
+      });
+    } catch (err) {
+      runInAction(() => {
+        console.log(err);
+      });
+    }
+  };
+
   constructor() {
     makeObservable(this, {
       userPosts: observable,
+      followedPosts: observable,
       // usersPosts: computed,
       // allUsers: computed,
       // another: computed,
       anotherPosts: observable,
       post: observable,
       // getUser: action.bound,
-      // getFollowedPosts: action.bound,
+      getFollowedPosts: action.bound,
       getUserPosts: action.bound,
       // getAnotherPosts: action.bound,
       addPost: action.bound,

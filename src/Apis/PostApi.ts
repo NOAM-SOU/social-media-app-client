@@ -3,7 +3,7 @@ import { api } from "./api";
 
 class PostApi {
   async followedPosts(userId: string) {
-    return await api.get(`user/follow/getposts/${userId}`);
+    return await api.get(`/follow/getposts/${userId}`);
   }
 
   async getUserPosts(userId: string) {

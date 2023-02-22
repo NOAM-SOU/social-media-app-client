@@ -1,12 +1,8 @@
 import "./App.css";
 import SignUp from "./Pages/SignUp/SignUp.js";
-// import Home from "./Pages/Home/Home";
-// import Login from "./Pages/Login/Login";
-// import NewPost from "./Pages/NewPost/NewPost";
-// import Search from "./Pages/Search/Search";
+
 import { observer } from "mobx-react";
 import React, { useEffect } from "react";
-// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { rootStores } from "./Stores/main";
 import Login from "./Pages/Login/Login";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -16,13 +12,8 @@ import PostPage from "./Pages/PostPage/PostPage";
 import NewPost from "./Pages/NewPost/NewPost";
 import Search from "./Pages/Search/Search";
 import UserPage from "./Pages/UserPage/UserPage";
-// import ProfilePage from "./Pages/ProfilePage/ProfilePage";
-// import MyContext from "./Context/MyContext";
-// import { useState } from "react";
-// import ProfilePage from "./Pages/ProfilePage/ProfilePage";
-// import PopUpOut from "./Components/PopUp/PopUpOut";
-// import UserPage from "./Pages/UserPage/UserPage";
-// import PostPage from "./Pages/PostPage/PostPage";
+import Profile from "./Pages/ProfilePage/ProfilePage";
+import Layout from "./Components/Layout/Layout";
 
 function App() {
   const { authStore, postStore } = rootStores;
@@ -56,6 +47,7 @@ function App() {
 
       {/* <MyContext.Provider value={{ show, setShow }}> */}
       <BrowserRouter>
+        {/* <Layout> */}
         <Routes>
           <Route
             path="/"
@@ -75,7 +67,7 @@ function App() {
           />
           <Route
             path="/profilepage"
-            element={isUserLoggedIn ? <ProfilePage /> : <Navigate to="login" />}
+            element={isUserLoggedIn ? <Profile /> : <Navigate to="login" />}
           />
           <Route
             path="/search"
@@ -87,6 +79,7 @@ function App() {
 
           {/* <Route path="*" element={<Navigate to="/" />} />  */}
         </Routes>
+        {/* </Layout> */}
       </BrowserRouter>
       {/* </MyContext.Provider> */}
     </div>

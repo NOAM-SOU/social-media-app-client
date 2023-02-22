@@ -21,6 +21,7 @@ class PostStore {
     content: "",
     img: "",
   };
+  anotherPosts: Post[] = [];
 
   addPost = async (post: Post | FormData, userId: string) => {
     try {
@@ -43,8 +44,7 @@ class PostStore {
       console.log(res);
 
       runInAction(() => {
-        this.post = res.data.data;
-        this.post.img = res.data.dataUrl;
+        this.post = res.data;
         console.log(res.data);
       });
     } catch (err) {
@@ -54,11 +54,16 @@ class PostStore {
     }
   };
 
-  getUserPosts = async (userId: string) => {
+  getUserPosts = async (userId: string, otherPosts: boolean = true) => {
     try {
       const res = await postApi.getUserPosts(userId);
-      this.userPosts = res.data;
-
+      // this.userPosts = res.data;
+      runInAction(() => {
+        if (otherPosts) {
+          this.userPosts = res.data;
+        }
+        this.anotherPosts = res.data;
+      });
       runInAction(() => {
         // this.post.img = res.data.dataUrl;
         console.log(res.data);
@@ -72,17 +77,14 @@ class PostStore {
 
   constructor() {
     makeObservable(this, {
-      // session: observable,
-      // errorStatus: computed,
       userPosts: observable,
       // usersPosts: computed,
       // allUsers: computed,
       // another: computed,
-      // anotherPosts: computed,
+      anotherPosts: observable,
       post: observable,
       // getUser: action.bound,
       // getFollowedPosts: action.bound,
-      // getAllUsers: action.bound,
       getUserPosts: action.bound,
       // getAnotherPosts: action.bound,
       addPost: action.bound,

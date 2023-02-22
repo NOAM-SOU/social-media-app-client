@@ -1,23 +1,29 @@
 import { observer } from "mobx-react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { rootStores } from "../../Stores/main";
 import "./FormUserPage.css";
 
-const { USER_STORE } = rootStores;
+const { userStore, authStore, postStore } = rootStores;
 
 function FormUserPage() {
-  const { getUser, another, anotherPosts, getAnotherPosts } = USER_STORE;
+  const { another } = userStore;
+  const { getUser } = authStore;
+  const { getUserPosts, anotherPosts } = postStore;
+
   const [follow, setFollow] = useState(false);
 
   const { userId } = useParams();
 
   useEffect(() => {
-    getUser(userId, false);
+    getUser(userId!, false);
   });
 
+  console.log("anotherrr", another);
+
   useEffect(() => {
-    getAnotherPosts(another._id);
+    getUserPosts(another._id, false);
   });
 
   return (

@@ -14,6 +14,8 @@ import Home from "./Pages/Home/Home";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import PostPage from "./Pages/PostPage/PostPage";
 import NewPost from "./Pages/NewPost/NewPost";
+import Search from "./Pages/Search/Search";
+import UserPage from "./Pages/UserPage/UserPage";
 // import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 // import MyContext from "./Context/MyContext";
 // import { useState } from "react";
@@ -24,7 +26,7 @@ import NewPost from "./Pages/NewPost/NewPost";
 
 function App() {
   const { authStore, postStore } = rootStores;
-  const { getUser, user, userProfile, img, isUserLoggedIn } = authStore;
+  const { getUser, user, userProfile, isUserLoggedIn } = authStore;
   const { getPost, post, newPost } = postStore;
   // const [show, setShow] = useState(false);
 
@@ -75,12 +77,12 @@ function App() {
             path="/profilepage"
             element={isUserLoggedIn ? <ProfilePage /> : <Navigate to="login" />}
           />
-          {/* <Route
+          <Route
             path="/search"
             element={isUserLoggedIn ? <Search /> : <Navigate to="login" />}
-          /> */}
+          />
 
-          {/* <Route path="/:userId" element={<UserPage />} /> */}
+          <Route path="/:userId" element={<UserPage />} />
           <Route path="/postpage/:postId" element={<PostPage />} />
 
           {/* <Route path="*" element={<Navigate to="/" />} />  */}

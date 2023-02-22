@@ -10,16 +10,17 @@ import jwtDecode from "jwt-decode";
 import { Token } from "../types/token";
 import { UserI, UserInfo, UserProfile } from "../interfaces/user";
 import { Error } from "../interfaces/error";
+import userStore from "./userStore";
+import { userProfile } from "../tools/userStoreTool";
 
 class AuthStore {
   user: UserInfo | null = null;
-  userProfile: any = {};
+  userProfile: UserProfile = userProfile;
   token: Token = "";
   errorStatus: Error = {
     error: "",
     code: 0,
   };
-  img: any = "";
 
   get isUserLoggedIn() {
     return this.user != null;
@@ -57,16 +58,18 @@ class AuthStore {
     }
   }
 
-  async getUser(userId: string) {
+  async getUser(userId: string, otherUser: boolean = true) {
     try {
       const data = await AuthApi.getUser(userId);
       console.log("data", data.data);
-      this.userProfile = data.data.data;
-      this.img = data.data.dataUrl;
-      // runInAction(() => {
-      //   if (boolean) this.session.userProfile = data;
-      //   else this.session.another = data;
-      // });
+      // this.userProfile = data.data.data;
+      // this.img = data.data.dataUrl;
+      runInAction(() => {
+        if (otherUser) {
+          this.userProfile = data.data;
+        }
+        userStore.another = data.data;
+      });
     } catch (err: any) {
       runInAction(() => {
         // this.errorStatus = data.response.data;
@@ -100,7 +103,6 @@ class AuthStore {
       user: observable,
       errorStatus: observable,
       userProfile: observable,
-      img: observable,
       isUserLoggedIn: computed,
       login: action.bound,
       logout: action.bound,

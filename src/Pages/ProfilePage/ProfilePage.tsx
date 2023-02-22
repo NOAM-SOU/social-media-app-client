@@ -9,7 +9,7 @@ import React from "react";
 const { authStore, postStore } = rootStores;
 
 function ProfilePage() {
-  const { user, userProfile, getUser, img } = authStore;
+  const { user, userProfile, getUser } = authStore;
   const { getUserPosts, userPosts } = postStore;
   useEffect(() => {
     getUser(user?.id!);
@@ -29,7 +29,11 @@ function ProfilePage() {
         <div className="first-div-profile-page">
           <div className="profile-page-header">
             <div className="profile-page-header-img">
-              <img src={img} alt="profileImg" id="img-profile-page" />
+              <img
+                src={userProfile.profileImg}
+                alt="profileImg"
+                id="img-profile-page"
+              />
             </div>
             <div className="profile-page-header-postnumber">
               <div>{userProfile.numberOfPosts}</div>

@@ -29,18 +29,16 @@ const Home = () => {
   console.log("followeddd", followedPosts);
 
   return (
-    <Layout>
-      <div className="container">
-        <HeaderHome />
-        <main>
-          <Stories />
-          <section className="posts">
-            <Posts />
-          </section>
-        </main>
-        <button onClick={logout}>logout</button>
-      </div>
-    </Layout>
+    <div className="container">
+      <HeaderHome />
+      <main>
+        {/* <Stories /> */}
+        <section className="posts">
+          <Posts />
+        </section>
+      </main>
+      <button onClick={logout}>logout</button>
+    </div>
   );
 };
 

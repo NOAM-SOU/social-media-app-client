@@ -3,6 +3,8 @@ import "./ProfilePage.css";
 import { rootStores } from "../../Stores/main";
 import { observer } from "mobx-react";
 import Layout from "../../Components/Layout/Layout";
+import Gallery from "../../Components/gallery/gallery";
+import Header from "../../Components/header/header";
 
 const { authStore, postStore } = rootStores;
 
@@ -22,67 +24,12 @@ function Profile() {
   //   const [follow, setFollow] = useState(false);
 
   return (
-    <Layout>
-      <div className="profile-container">
-        <div className="profile-header">
-          <div className="profile-avatar-container">
-            <img
-              className="profile-avatar"
-              src={userProfile.profileImg}
-              alt="Profile Avatar"
-            />
-          </div>
-          <div className="profile-info-container">
-            <div className="profile-username-container">
-              <h1 className="profile-username">{userProfile.name}</h1>
-              <button className="profile-edit-button">Edit Profile</button>
-              <i className="fas fa-cog"></i>
-            </div>
-            <div className="profile-stats-container">
-              <div className="profile-stat-container">
-                <span className="profile-stat-count">
-                  {userProfile.numberOfPosts}
-                </span>{" "}
-                posts
-              </div>
-              <div className="profile-stat-container">
-                <span className="profile-stat-count">
-                  {userProfile.numberOfFollowers}
-                </span>{" "}
-                followers
-              </div>
-              <div className="profile-stat-container">
-                <span className="profile-stat-count">
-                  {userProfile.numberOfFollowed}
-                </span>
-                following
-              </div>
-            </div>
-            <div className="profile-bio-container">
-              <h2 className="profile-name">{userProfile.email}</h2>
-              <p className="profile-bio">{userProfile.biography}</p>
-            </div>
-          </div>
-        </div>
-        <div className="profile-posts-container">
-          {userPosts.map((post) => (
-            <div key={post._id} className="profile-post-container">
-              <img className="profile-post-image" src={post.img} alt="" />
-              <div className="profile-post-stats">
-                <div className="profile-post-stat">
-                  <i className="far fa-heart"></i>
-                  <span>{post.likes}</span>
-                </div>
-                <div className="profile-post-stat">
-                  <i className="far fa-comment"></i>
-                  <span>{post.comments}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Layout>
+    // <Layout>
+    <div className="profile-container">
+      <Header />
+      <Gallery />
+    </div>
+    // </Layout>
   );
 }
 

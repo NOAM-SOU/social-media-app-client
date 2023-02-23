@@ -26,7 +26,11 @@ function Post(props: PostProps) {
   return (
     <li>
       <div className="post-header">
-        <img src={another.profileImg} alt="Profile" />
+        <img
+          className="post--img-src-user"
+          src={another.profileImg}
+          alt="Profile"
+        />
         <h2>{another.name}</h2>
       </div>
       <div className="img-post">

@@ -5,8 +5,12 @@ import { ChildrenProps } from "../../types/props";
 import { FaHome, FaPlusSquare, FaSearch, FaUser } from "react-icons/fa";
 import "./Layout.css";
 console.log(FaUser);
+import { rootStores } from "../../Stores/main";
+
+const { authStore } = rootStores;
 
 function Layout({ children }: ChildrenProps) {
+  const { user } = authStore;
   const navigate = useNavigate();
   return (
     <div className="firstdiv-layout">
@@ -24,7 +28,7 @@ function Layout({ children }: ChildrenProps) {
           <FaPlusSquare />
         </Link>
 
-        <Link className="link-layout-router" to="/profilepage">
+        <Link className="link-layout-router" to={`/profilepage/${user?.id}`}>
           <FaUser />
         </Link>
       </nav>

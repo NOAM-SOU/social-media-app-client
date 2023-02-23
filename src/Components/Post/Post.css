@@ -82,3 +82,7 @@ li {
   font-size: 0.8rem;
   margin-left: 2%;
 }
+
+.heart-icon-like {
+  color: red;
+}

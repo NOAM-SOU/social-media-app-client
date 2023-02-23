@@ -5,20 +5,13 @@ import { observer } from "mobx-react";
 import Layout from "../../Components/Layout/Layout";
 import Gallery from "../../Components/gallery/gallery";
 import Header from "../../Components/header/header";
+import { useParams } from "react-router-dom";
 
-const { authStore, postStore } = rootStores;
+const { authStore, postStore, followStore } = rootStores;
 
 function Profile() {
-  const { user, userProfile, getUser } = authStore;
-  const { getUserPosts, userPosts } = postStore;
-  useEffect(() => {
-    getUser(user?.id!);
-  }, []);
+  const { id } = useParams();
 
-  useEffect(() => {
-    getUserPosts(user?.id!);
-  }, []);
-  console.log("userPosts", userPosts);
   //   console.log(userProfile);
 
   //   const [follow, setFollow] = useState(false);
@@ -26,8 +19,8 @@ function Profile() {
   return (
     // <Layout>
     <div className="profile-container">
-      <Header />
-      <Gallery />
+      <Header id={id!} />
+      <Gallery id={id!} />
     </div>
     // </Layout>
   );

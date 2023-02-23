@@ -1,15 +1,17 @@
 import { observer } from "mobx-react";
 import "./Post.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiSend } from "react-icons/fi";
 import { RiBookmarkLine, RiHeart3Line } from "react-icons/ri";
 import { FaRegComment } from "react-icons/fa";
 import { PostProps } from "../../interfaces/PostProps";
 import { rootStores } from "../../Stores/main";
+import { addLike } from "../../tools/likesFunctions";
 
 function Post(props: PostProps) {
   const { authStore, postStore, userStore } = rootStores;
+  const [like, setLike] = useState<boolean>(false);
 
   const { getFollowedPosts } = postStore;
   const { user, getUser } = authStore;
@@ -41,7 +43,15 @@ function Post(props: PostProps) {
       <div className="post-footer">
         <div className="post-icons">
           <div>
-            <RiHeart3Line />
+            <RiHeart3Line
+              onClick={async () => {
+                console.log("userId", user?.id, "postId", props.post._id);
+
+                await addLike(user?.id!, props.post._id!);
+                setLike(true);
+              }}
+              className={like ? "heart-icon-like" : "heart-icon-postpage"}
+            />
             <FiSend />
             <FaRegComment />
           </div>

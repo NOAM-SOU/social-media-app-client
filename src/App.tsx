@@ -66,7 +66,7 @@ function App() {
               element={isUserLoggedIn ? <NewPost /> : <Navigate to="login" />}
             />
             <Route
-              path="/profilepage"
+              path="/profilepage/:id"
               element={isUserLoggedIn ? <Profile /> : <Navigate to="login" />}
             />
             <Route
@@ -74,7 +74,7 @@ function App() {
               element={isUserLoggedIn ? <Search /> : <Navigate to="login" />}
             />
 
-            <Route path="/:userId" element={<UserPage />} />
+            {/* <Route path="/:userId" element={<UserPage />} /> */}
             <Route path="/postpage/:postId" element={<PostPage />} />
 
             {/* <Route path="*" element={<Navigate to="/" />} />  */}

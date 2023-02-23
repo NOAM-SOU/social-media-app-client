@@ -44,7 +44,7 @@ function FormSearch() {
           result?.map((u) => {
             return (
               <div className="formsearch-result-ul">
-                <Link to={`/${u._id}`}>
+                <Link to={`/profilepage/${u._id}`}>
                   <div className="div-img-result-searchform">
                     <img
                       className="formsearch-result-img"

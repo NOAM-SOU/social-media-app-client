@@ -1,32 +1,31 @@
 import { observer } from "mobx-react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { RiUserFollowFill } from "react-icons/ri";
 import { rootStores } from "../../Stores/main";
 import { addFollow } from "../../tools/followFunctions";
-import { IdProps } from "../../types/props";
+import { HeaderProps } from "../../types/props";
 import "./header.css";
 
-const { authStore, postStore, userStore, followStore } = rootStores;
+const { authStore, userStore, followStore } = rootStores;
 
-const Header = ({ id }: IdProps) => {
-  const { user, userProfile, getUser } = authStore;
-  const { getUserPosts, userPosts } = postStore;
+const Header = ({ id, state, setState }: HeaderProps) => {
+  const { user, userProfile } = authStore;
   const { another } = userStore;
-  const { follow, getFollowedUsers, followedUsers } = followStore;
-  const [following, setFollowing] = useState<boolean>(false);
+  const { followedUsers } = followStore;
+  // const [following, setFollowing] = useState<boolean>(false);
 
-  useEffect(() => {
-    getFollowedUsers(user?.id!);
-  }, []);
+  // useEffect(() => {
+  //   getFollowedUsers(user?.id!);
+  // }, []);
 
-  useEffect(() => {
-    id === user?.id ? getUser(id!) : getUser(id!, false);
-  }, [id, followedUsers]);
+  // useEffect(() => {
+  //   id === user?.id ? getUser(id!) : getUser(id!, false);
+  // }, [id, followedUsers]);
 
-  useEffect(() => {
-    const inclueds = followedUsers.find((u) => u._id === another._id);
-    if (inclueds) setFollowing(true);
-  }, [followedUsers, another._id]);
+  // useEffect(() => {
+  //   const inclueds = followedUsers.find((u) => u._id === another._id);
+  //   if (inclueds) setFollowing(true);
+  // }, [followedUsers, another._id]);
 
   console.log("followeddddd", followedUsers);
   return (
@@ -89,11 +88,11 @@ const Header = ({ id }: IdProps) => {
             <button
               onClick={() => {
                 addFollow(user?.id!, another._id);
-                setFollowing(true);
+                setState(true);
               }}
               className="another-button"
             >
-              {following ? <RiUserFollowFill /> : "Follow"}
+              {state ? <RiUserFollowFill /> : "Follow"}
             </button>
             <button className="another-button">Message</button>
           </>

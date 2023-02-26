@@ -39,7 +39,11 @@ class FollowStore {
     }
   };
   constructor() {
-    makeObservable(this, {});
+    makeObservable(this, {
+      followedUsers: observable,
+      addFollow: action.bound,
+      getFollowedUsers: action.bound,
+    });
   }
 }
 

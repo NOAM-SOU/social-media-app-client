@@ -10,8 +10,6 @@ import { Post } from "../interfaces/post";
 import { UserProfile } from "../interfaces/user";
 import { userProfile } from "../tools/userStoreTool";
 
-// import userApi from "../Apis/UserApi";
-
 class UserStore {
   allUsers: UserProfile[] = [];
   another: UserProfile = userProfile;
@@ -28,16 +26,9 @@ class UserStore {
 
   constructor() {
     makeObservable(this, {
-      //   session: observable,
       allUsers: observable,
       another: observable,
-      //   anotherPosts: computed,
-      //   post: computed,
-      //   getUser: action.bound,
-      //   getFollowedPosts: action.bound,
       getAllUsers: action.bound,
-      //   getUserPosts: action.bound,
-      //   getAnotherPosts: action.bound,
     });
   }
 }

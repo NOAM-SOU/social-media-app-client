@@ -8,13 +8,13 @@ import "./gallery.css";
 const { authStore, postStore } = rootStores;
 
 const Gallery = ({ id }: IdProps) => {
-  const { user, userProfile, getUser } = authStore;
-  const { getUserPosts, userPosts, anotherPosts } = postStore;
+  const { user } = authStore;
+  const { userPosts, anotherPosts } = postStore;
 
-  useEffect(() => {
-    id === user?.id ? getUserPosts(id!) : getUserPosts(id!, false);
-  }, [id]);
-  console.log("idddd", id);
+  // useEffect(() => {
+  //   id === user?.id ? getUserPosts(id!) : getUserPosts(id!, false);
+  // }, [id]);
+  // console.log("idddd", id);
 
   return (
     <div className="gallery-container">

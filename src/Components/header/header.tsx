@@ -2,32 +2,26 @@ import { observer } from "mobx-react";
 import React from "react";
 import { RiUserFollowFill } from "react-icons/ri";
 import { rootStores } from "../../Stores/main";
-import { addFollow } from "../../tools/followFunctions";
+import { addFollow, removeFollow } from "../../tools/followFunctions";
 import { HeaderProps } from "../../types/props";
 import "./header.css";
 
-const { authStore, userStore, followStore } = rootStores;
+const { authStore, userStore } = rootStores;
 
 const Header = ({ id, state, setState }: HeaderProps) => {
   const { user, userProfile } = authStore;
   const { another } = userStore;
-  const { followedUsers } = followStore;
-  // const [following, setFollowing] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   getFollowedUsers(user?.id!);
-  // }, []);
+  const toggleFollow = (userId: string, anotherId: string) => {
+    if (state) {
+      removeFollow(userId, anotherId);
+    } else {
+      addFollow(userId, anotherId);
+    }
+    setState(!state);
+  };
 
-  // useEffect(() => {
-  //   id === user?.id ? getUser(id!) : getUser(id!, false);
-  // }, [id, followedUsers]);
-
-  // useEffect(() => {
-  //   const inclueds = followedUsers.find((u) => u._id === another._id);
-  //   if (inclueds) setFollowing(true);
-  // }, [followedUsers, another._id]);
-
-  console.log("followeddddd", followedUsers);
+  console.log("state", state);
   return (
     <div className="header-container">
       <div className="header-part1">
@@ -87,8 +81,7 @@ const Header = ({ id, state, setState }: HeaderProps) => {
           <>
             <button
               onClick={() => {
-                addFollow(user?.id!, another._id);
-                setState(true);
+                toggleFollow(user?.id!, another._id!);
               }}
               className="another-button"
             >

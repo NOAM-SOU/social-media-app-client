@@ -18,7 +18,9 @@ class UserStore {
     try {
       const data = await userApi.getAllUsers();
       console.log("data", data.data);
-      this.allUsers = data.data;
+      runInAction(() => {
+        this.allUsers = data.data;
+      });
     } catch (err) {
       console.log(err);
     }

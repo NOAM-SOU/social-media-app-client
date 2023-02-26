@@ -8,6 +8,10 @@ class FollowApi {
   async addFollow(userId: string, to: string) {
     return await api.get(`follow/addfollow/${userId}/${to}`);
   }
+
+  async removeFollow(userId: string, from: string) {
+    return await api.get(`follow/removefollow/${userId}/${from}`);
+  }
 }
 
 const followApi = new FollowApi();

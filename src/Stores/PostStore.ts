@@ -81,8 +81,9 @@ class PostStore {
       const res = await postApi.followedPosts(userId);
       console.log(res.data);
 
-      this.followedPosts = res.data;
       runInAction(() => {
+        this.followedPosts = res.data;
+
         // this.followedPosts = res.data;
       });
     } catch (err) {
@@ -96,18 +97,11 @@ class PostStore {
     makeObservable(this, {
       userPosts: observable,
       followedPosts: observable,
-      // usersPosts: computed,
-      // allUsers: computed,
-      // another: computed,
       anotherPosts: observable,
       post: observable,
-      // getUser: action.bound,
       getFollowedPosts: action.bound,
       getUserPosts: action.bound,
-      // getAnotherPosts: action.bound,
       addPost: action.bound,
-      // getPost: action.bound,
-      // deletePost: action.bound,
     });
   }
 }

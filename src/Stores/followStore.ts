@@ -20,10 +20,30 @@ class FollowStore {
       console.log("data", data.data);
       authStore.userProfile = data.data.newFollowed;
       userStore.another = data.data.newFollow;
-      this.followedUsers.push(data.data.newFollow._id);
+      runInAction(() => {
+        this.followedUsers.push(data.data.newFollow._id);
+      });
       console.log("follow", this.follow);
 
       console.log("follow-now", this.follow);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  removeFollow = async (userId: string, from: string) => {
+    try {
+      const data = await followApi.removeFollow(userId, from);
+      console.log("data", data.data);
+      authStore.userProfile = data.data.removeFromUser;
+      userStore.another = data.data.removeFromFollowedUser;
+      runInAction(() => {
+        this.followedUsers.filter(
+          (id) => id !== data.data.removeFromFollowedUser._id
+        );
+      });
+
+      console.log("followeduserrrrr", this.followedUsers);
     } catch (err) {
       console.log(err);
     }
@@ -33,7 +53,9 @@ class FollowStore {
     try {
       const data = await followApi.getFollowedUsers(userId);
       console.log("followedusers", data.data);
-      this.followedUsers = data.data;
+      runInAction(() => {
+        this.followedUsers = data.data;
+      });
     } catch (err) {
       console.log(err);
     }
@@ -43,6 +65,7 @@ class FollowStore {
       followedUsers: observable,
       addFollow: action.bound,
       getFollowedUsers: action.bound,
+      removeFollow: action.bound,
     });
   }
 }

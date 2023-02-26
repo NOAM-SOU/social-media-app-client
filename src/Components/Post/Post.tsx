@@ -5,25 +5,24 @@ import { Link } from "react-router-dom";
 import { FiSend } from "react-icons/fi";
 import { RiBookmarkLine, RiHeart3Line } from "react-icons/ri";
 import { FaRegComment } from "react-icons/fa";
-import { PostProps } from "../../interfaces/PostProps";
 import { rootStores } from "../../Stores/main";
 import { addLike } from "../../tools/likesFunctions";
+import { PostProps } from "../../types/props";
 
 function Post(props: PostProps) {
-  const { authStore, postStore, userStore } = rootStores;
-  const [like, setLike] = useState<boolean>(false);
+  const { authStore, postStore, userStore, likeStore } = rootStores;
 
-  const { getFollowedPosts } = postStore;
+  const { getFollowedPosts, post } = postStore;
   const { user, getUser } = authStore;
   const { another } = userStore;
 
-  useEffect(() => {
-    getFollowedPosts(user?.id!);
-  }, []);
+  // useEffect(() => {
+  //   getFollowedPosts(user?.id!);
+  // }, []);
 
-  useEffect(() => {
-    getUser(props.post.userId!, false);
-  }, []);
+  // useEffect(() => {
+  //   getUser(props.post.userId!, false);
+  // }, []);
 
   return (
     <li>
@@ -37,7 +36,7 @@ function Post(props: PostProps) {
       </div>
       <div className="img-post">
         <Link to="/">
-          <img className="post--img-src" src={props.post.img} alt="Post" />
+          <img className="post--img-src" src={post.img} alt="Post" />
         </Link>
       </div>
       <div className="post-footer">
@@ -45,12 +44,14 @@ function Post(props: PostProps) {
           <div>
             <RiHeart3Line
               onClick={async () => {
-                console.log("userId", user?.id, "postId", props.post._id);
+                console.log("userId", user?.id, "postId", post._id);
 
-                await addLike(user?.id!, props.post._id!);
-                setLike(true);
+                await addLike(user?.id!, post._id!);
+                props.setState(true);
               }}
-              className={like ? "heart-icon-like" : "heart-icon-postpage"}
+              className={
+                props.state ? "heart-icon-like" : "heart-icon-postpage"
+              }
             />
             <FiSend />
             <FaRegComment />
@@ -60,11 +61,11 @@ function Post(props: PostProps) {
           </div>
         </div>
         <div className="div-likes">
-          <h2 className="post-likes">{props.post.numberOfLikes} Likes</h2>
+          <h2 className="post-likes">{post.numberOfLikes} Likes</h2>
         </div>
         <div className="post-details">
           <h2 className="post-username">{another.name}</h2>
-          <h2 className="content-post">{props.post.content}</h2>
+          <h2 className="content-post">{post.content}</h2>
         </div>
       </div>
     </li>

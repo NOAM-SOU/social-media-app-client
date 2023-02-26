@@ -9,28 +9,49 @@ import { rootStores } from "../../Stores/main";
 
 import "./PostPage.css";
 
-const { authStore, postStore, userStore } = rootStores;
+const { authStore, postStore, userStore, likeStore } = rootStores;
 
 function PostPage() {
   const { postId } = useParams();
   const { getPost, post } = postStore;
   const { getUser } = authStore;
+  const { getLikes, likes } = likeStore;
+  const { user } = authStore;
+
+  const [like, setLike] = useState<boolean>(false);
 
   console.log(postId);
 
   useEffect(() => {
-    getUser(post.userId!);
-  }, []);
+    async function checkLikeStatus() {
+      const includes = likes.find((l) => l._id === user?.id);
+      if (includes) {
+        console.log("inccccc", includes);
 
-  useEffect(() => {
-    getPost(postId!);
-  }, []);
+        setLike(true);
+      } else {
+        setLike(false);
+      }
+    }
+    async function fetchPost() {
+      await getUser(post.userId!);
+      console.log("llegeeee");
 
-  const [like, setLike] = useState(false);
+      await getPost(postId!);
+      console.log("toooo");
+
+      await getLikes(postId!);
+      console.log("ggggg");
+
+      await checkLikeStatus();
+      console.log("suiiiiii");
+    }
+    fetchPost();
+  }, []);
 
   return (
     <div className="postpage-container">
-      <Post post={post} key={post._id!} />
+      <Post post={post} key={post._id!} state={like} setState={setLike} />
     </div>
   );
 }

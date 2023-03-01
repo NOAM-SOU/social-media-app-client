@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ProfilePage.css";
 import { rootStores } from "../../Stores/main";
 import { observer } from "mobx-react";
@@ -6,12 +6,13 @@ import Gallery from "../../Components/gallery/gallery";
 import Header from "../../Components/header/header";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { IsLoading } from "../../Context/MyContext";
 
 const { authStore, postStore, followStore, userStore } = rootStores;
 
 function Profile() {
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { isLoading, setIsLoading } = useContext(IsLoading);
 
   const { user, getUser } = authStore;
   const { getUserPosts } = postStore;
@@ -21,11 +22,13 @@ function Profile() {
   useEffect(() => {
     async function checkFollowingStatus() {
       const includes = followedUsers.find((u) => u._id === id);
-      if (includes) {
-        setFollowing(true);
-      } else {
-        setFollowing(false);
-      }
+      console.log("inclues follow", includes);
+      includes ? setFollowing(true) : setFollowing(false);
+      // if (includes) {
+      //   setFollowing(true);
+      // } else {
+      //   setFollowing(false);
+      // }
     }
     async function fetchUser() {
       if (id === user?.id) {

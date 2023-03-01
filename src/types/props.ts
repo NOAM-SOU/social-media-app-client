@@ -10,13 +10,13 @@ export type IdProps = {
 };
 
 export type StateProps = {
-  state: boolean;
-  setState: Dispatch<SetStateAction<boolean>>;
+  state?: boolean;
+  setState?: Dispatch<SetStateAction<boolean>>;
 };
 
 export type PostT = {
-  post: Post;
-  key: string;
+  post?: Post;
+  key?: string;
 };
 
 export type PostProps = PostT & StateProps;

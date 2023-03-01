@@ -14,7 +14,7 @@ const Gallery = ({ id }: IdProps) => {
   // useEffect(() => {
   //   id === user?.id ? getUserPosts(id!) : getUserPosts(id!, false);
   // }, [id]);
-  // console.log("idddd", id);
+  console.log(id, "GET USER ID");
 
   return (
     <div className="gallery-container">

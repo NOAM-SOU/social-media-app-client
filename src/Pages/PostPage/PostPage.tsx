@@ -18,40 +18,20 @@ function PostPage() {
   const { getLikes, likes } = likeStore;
   const { user } = authStore;
 
-  const [like, setLike] = useState<boolean>(false);
-
-  console.log(postId);
+  console.log(user?.id, "THE OFICIAL USER ID IN POSTPAGE");
 
   useEffect(() => {
-    async function checkLikeStatus() {
-      const includes = likes.find((l) => l._id === user?.id);
-      if (includes) {
-        console.log("inccccc", includes);
-
-        setLike(true);
-      } else {
-        setLike(false);
-      }
-    }
     async function fetchPost() {
-      await getUser(post.userId!);
-      console.log("llegeeee");
-
       await getPost(postId!);
       console.log("toooo");
-
-      await getLikes(postId!);
-      console.log("ggggg");
-
-      await checkLikeStatus();
-      console.log("suiiiiii");
     }
     fetchPost();
-  }, []);
+  }, [postId]);
 
+  console.log(post._id, "possssst");
   return (
     <div className="postpage-container">
-      <Post post={post} key={post._id!} state={like} setState={setLike} />
+      <Post key={post._id!} post={post} />
     </div>
   );
 }

@@ -18,7 +18,7 @@ const Header = ({ id, state, setState }: HeaderProps) => {
     } else {
       addFollow(userId, anotherId);
     }
-    setState(!state);
+    setState!(!state);
   };
 
   console.log("state", state);

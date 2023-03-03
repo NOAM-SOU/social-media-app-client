@@ -18,17 +18,20 @@ function PostPage() {
   const { getLikes, likes } = likeStore;
   const { user } = authStore;
 
+  console.log(post._id!, "POST ID IN THE POST PAGE OF ALWAYS IS UNDEFIND");
+
   console.log(user?.id, "THE OFICIAL USER ID IN POSTPAGE");
 
   useEffect(() => {
     async function fetchPost() {
+      console.log(postId!, "POST IS IN THE GET POST FUNCTION IN THE POSTPAFGE");
+
       await getPost(postId!);
       console.log("toooo");
     }
     fetchPost();
-  }, [postId]);
+  }, []);
 
-  console.log(post._id, "possssst");
   return (
     <div className="postpage-container">
       <Post key={post._id!} post={post} />

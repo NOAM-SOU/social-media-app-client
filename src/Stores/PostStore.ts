@@ -41,6 +41,8 @@ class PostStore {
 
   getPost = async (postId: string) => {
     try {
+      console.log(postId, "POST ID FROM THE POSTPAGE FUNCt");
+
       const res = await postApi.getPost(postId);
       console.log(res);
 

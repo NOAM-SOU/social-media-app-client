@@ -7,27 +7,29 @@ import { RiBookmarkLine, RiHeart3Line } from "react-icons/ri";
 import { FaRegComment } from "react-icons/fa";
 import { RiHeartFill } from "react-icons/ri";
 import { rootStores } from "../../Stores/main";
-import { addLike } from "../../tools/likesFunctions";
+import { addLike, removeLike } from "../../tools/likesFunctions";
 import { PostProps } from "../../types/props";
 import { IsLoading } from "../../Context/MyContext";
 import { ClipLoader } from "react-spinners";
 
 function Post(props: PostProps) {
-  const { authStore, postStore, userStore, likeStore } = rootStores;
+  const { authStore, userStore, likeStore } = rootStores;
 
-  const { getFollowedPosts, post, getPost } = postStore;
   const { user, getUser } = authStore;
   const { another } = userStore;
-  const { likes, getLikes, checkLikeStatus, likeStatus, removeLike } =
-    likeStore;
+  const { checkLikeStatus } = likeStore;
   const [like, setLike] = useState<boolean | null>(false);
   const { isLoading, setIsLoading } = useContext(IsLoading);
+  const [likeCount, setLikeCount] = useState<number | undefined>(
+    props.post?.numberOfLikes
+  );
 
-  // useEffect(() => {
-  //   // setLike(likeStatus);
-  // }, []);
-
-  // console.log(like, "LIKE STATEEEEEE");
+  console.log(
+    props.key!,
+    "THE KEY IN POST COMPONENT",
+    props.post?._id!,
+    "THE POST ID IN POST COMPONENT"
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -35,17 +37,21 @@ function Post(props: PostProps) {
 
       await getUser(props.post?.userId!, false);
       const likeSt = await checkLikeStatus(user?.id!, props.post?._id!);
+      console.log(likeSt, "LIKEST");
+
       setLike(likeSt);
       setIsLoading(false);
     }
     fetchData();
-  }, [like, setLike]);
+  }, [like, setLike, props.post?._id!]);
 
   const toggleLike = (userId: string, postId: string) => {
     if (like) {
       removeLike(userId, postId);
+      setLikeCount(likeCount! - 1);
     } else {
       addLike(userId, postId);
+      setLikeCount(likeCount! + 1);
     }
     setLike(!like);
   };
@@ -91,9 +97,7 @@ function Post(props: PostProps) {
                 </div>
               </div>
               <div className="div-likes">
-                <h2 className="post-likes">
-                  {props.post?.numberOfLikes} Likes
-                </h2>
+                <h2 className="post-likes">{likeCount} Likes</h2>
               </div>
               <div className="post-details">
                 <h2 className="post-username">{another.name}</h2>

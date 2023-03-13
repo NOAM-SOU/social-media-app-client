@@ -17,15 +17,15 @@ class FollowStore {
   addFollow = async (userId: string, to: string) => {
     try {
       const data = await followApi.addFollow(userId, to);
-      console.log("data", data.data);
+      // console.log("data", data.data);
       authStore.userProfile = data.data.newFollowed;
       userStore.another = data.data.newFollow;
       runInAction(() => {
         this.followedUsers.push(data.data.newFollow._id);
       });
-      console.log("follow", this.follow);
+      // console.log("follow", this.follow);
 
-      console.log("follow-now", this.follow);
+      // console.log("follow-now", this.follow);
     } catch (err) {
       console.log(err);
     }
@@ -34,7 +34,7 @@ class FollowStore {
   removeFollow = async (userId: string, from: string) => {
     try {
       const data = await followApi.removeFollow(userId, from);
-      console.log("data", data.data);
+      // console.log("data", data.data);
       authStore.userProfile = data.data.removeFromUser;
       userStore.another = data.data.removeFromFollowedUser;
       runInAction(() => {
@@ -43,7 +43,7 @@ class FollowStore {
         );
       });
 
-      console.log("followeduserrrrr", this.followedUsers);
+      // console.log("followeduserrrrr", this.followedUsers);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,7 @@ class FollowStore {
   getFollowedUsers = async (userId: string) => {
     try {
       const data = await followApi.getFollowedUsers(userId);
-      console.log("followedusers", data.data);
+      // console.log("followedusers", data.data);
       runInAction(() => {
         this.followedUsers = data.data;
       });
@@ -60,12 +60,22 @@ class FollowStore {
       console.log(err);
     }
   };
+
+  checkFollowStatus = async (
+    userId: string,
+    otherId: string
+  ): Promise<boolean> => {
+    const data = await followApi.followStatus(userId, otherId);
+    // console.log(data.data, "FOLLOW STATUS");
+    return data.data;
+  };
   constructor() {
     makeObservable(this, {
       followedUsers: observable,
       addFollow: action.bound,
       getFollowedUsers: action.bound,
       removeFollow: action.bound,
+      checkFollowStatus: action.bound,
     });
   }
 }

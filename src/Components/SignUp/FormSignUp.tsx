@@ -45,7 +45,7 @@ function FormSignUp() {
       initialValues={initialValuesRegister}
       validationSchema={validationSchemaRegister}
       onSubmit={async (values, { resetForm, setSubmitting }) => {
-        console.log("values", values);
+        // console.log("values", values);
 
         if (file) {
           const formData = new FormData();

@@ -11,7 +11,7 @@ class PostApi {
   }
 
   async addPost(post: Post | FormData, userId: string) {
-    console.log("post", post, "userId:", userId);
+    // console.log("post", post, "userId:", userId);
 
     return await api.post(`/post/addnewpost/${userId}`, post);
   }

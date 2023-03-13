@@ -10,8 +10,8 @@ export type IdProps = {
 };
 
 export type StateProps = {
-  state?: boolean;
-  setState?: Dispatch<SetStateAction<boolean>>;
+  state?: any;
+  setState?: Dispatch<SetStateAction<any>>;
 };
 
 export type PostT = {
@@ -22,3 +22,8 @@ export type PostT = {
 export type PostProps = PostT & StateProps;
 
 export type HeaderProps = IdProps & StateProps;
+
+export type SearchProps = {
+  value: StateProps;
+  result: StateProps;
+};

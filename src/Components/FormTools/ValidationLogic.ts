@@ -18,7 +18,7 @@ export async function readerFile(
 export async function imageHandler(image: File | Blob) {
   const formData = new FormData();
   const f = await formData.append("image", image);
-  console.log(f);
+  // console.log(f);
   return f;
 }
 

@@ -20,7 +20,7 @@ function FormUserPage() {
     getUser(userId!, false);
   });
 
-  console.log("anotherrr", another);
+  // console.log("anotherrr", another);
 
   useEffect(() => {
     getUserPosts(another._id, false);

@@ -26,7 +26,7 @@ const Home = () => {
   //   getFollowedPosts(user?.id!);
   // }, []);
 
-  console.log("followeddd", followedPosts);
+  // console.log("followeddd", followedPosts);
 
   return (
     <div className="container">

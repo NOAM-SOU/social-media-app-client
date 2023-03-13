@@ -8,7 +8,7 @@ function Upload() {
     const formData = new FormData();
     formData.append("image", image);
     formData.append("description", description);
-    console.log(formData);
+    // console.log(formData);
 
     const result = await axios.post(
       "http://localhost:5000/upload/images",
@@ -17,7 +17,7 @@ function Upload() {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(result);
+    // console.log(result);
 
     return result.data;
   }

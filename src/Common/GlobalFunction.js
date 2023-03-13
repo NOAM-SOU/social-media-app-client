@@ -39,6 +39,6 @@ export async function mobxFunction(func, data, change) {
       change = res;
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }

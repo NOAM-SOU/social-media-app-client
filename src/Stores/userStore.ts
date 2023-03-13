@@ -17,7 +17,7 @@ class UserStore {
   getAllUsers = async () => {
     try {
       const data = await userApi.getAllUsers();
-      console.log("data", data.data);
+      // console.log("data", data.data);
       runInAction(() => {
         this.allUsers = data.data;
       });

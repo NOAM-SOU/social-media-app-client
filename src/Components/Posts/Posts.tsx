@@ -18,8 +18,8 @@ function Posts() {
     getFollowedPosts(user?.id!);
   }, []);
 
-  console.log("herereee");
-  console.log(followedPosts, "FOLLOWED");
+  // console.log("herereee");
+  // console.log(followedPosts, "FOLLOWED");
 
   return (
     <div className="div-posts-home">

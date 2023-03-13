@@ -27,7 +27,7 @@ class PostStore {
   addPost = async (post: Post | FormData, userId: string) => {
     try {
       const res = await postApi.addPost(post, userId);
-      console.log(res);
+      // console.log(res);
       runInAction(() => {
         this.newPost = res.data.newPost;
         // this.userPosts.push(res);
@@ -41,14 +41,14 @@ class PostStore {
 
   getPost = async (postId: string) => {
     try {
-      console.log(postId, "POST ID FROM THE POSTPAGE FUNCt");
+      // console.log(postId, "POST ID FROM THE POSTPAGE FUNCt");
 
       const res = await postApi.getPost(postId);
-      console.log(res);
+      // console.log(res);
 
       runInAction(() => {
         this.post = res.data;
-        console.log(res.data);
+        console.log(this.post, "LOG OF THIS>POST");
       });
     } catch (err) {
       runInAction(() => {
@@ -69,7 +69,7 @@ class PostStore {
       });
       runInAction(() => {
         // this.post.img = res.data.dataUrl;
-        console.log(res.data);
+        // console.log(res.data);
       });
     } catch (err) {
       runInAction(() => {
@@ -81,7 +81,7 @@ class PostStore {
   getFollowedPosts = async (userId: string) => {
     try {
       const res = await postApi.followedPosts(userId);
-      console.log(res.data);
+      // console.log(res.data);
 
       runInAction(() => {
         this.followedPosts = res.data;

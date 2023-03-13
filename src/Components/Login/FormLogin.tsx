@@ -15,14 +15,14 @@ const { authStore } = rootStores;
 function FormLogin() {
   const { login, errorStatus } = authStore;
   const { error, code } = errorStatus;
-  console.log("message", error, "code", code);
+  // console.log("message", error, "code", code);
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        console.log("values", values);
+        // console.log("values", values);
 
         await login(values);
         await resetForm();

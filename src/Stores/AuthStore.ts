@@ -27,7 +27,7 @@ class AuthStore {
   }
 
   setUser(token: Token) {
-    console.log(token);
+    // console.log(token);
 
     runInAction(() => {
       if (token == null) {
@@ -36,7 +36,7 @@ class AuthStore {
       } else {
         localStorage.setItem("token", token);
         this.user = jwtDecode(token);
-        console.log(this.user);
+        // console.log(this.user);
 
         // this.errorStatus = {};
       }
@@ -45,11 +45,11 @@ class AuthStore {
 
   async signUp(user: UserI | FormData) {
     try {
-      console.log("user", user);
+      // console.log("user", user);
 
       const data = await AuthApi.signUp(user);
       this.setUser(data.token);
-      console.log(data);
+      // console.log(data);
     } catch (err: any) {
       // runInAction(() => {
       //   this.errorStatus = err;
@@ -61,7 +61,7 @@ class AuthStore {
   async getUser(userId: string, otherUser: boolean = true) {
     try {
       const data = await AuthApi.getUser(userId);
-      console.log("data", data.data);
+      // console.log("data", data.data);
       // this.userProfile = data.data.data;
       // this.img = data.data.dataUrl;
       runInAction(() => {
@@ -83,11 +83,11 @@ class AuthStore {
   }
 
   async login(user: UserI) {
-    console.log("user", user);
+    // console.log("user", user);
 
     try {
       const data = await AuthApi.login(user);
-      console.log("d", data);
+      // console.log("d", data);
 
       this.setUser(data.token);
     } catch (err: any) {

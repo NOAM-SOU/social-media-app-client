@@ -1,0 +1,152 @@
+/* .formsearch-first-div {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.formsearch-deiv-input {
+  border: solid 1px yellow;
+  width: 100%;
+  height: 5%;
+  margin-top: 5%;
+}
+
+#input-search-form {
+  width: 90%;
+  height: 90%;
+  outline: none;
+  padding-left: 2%;
+  border: 3px solid rgb(232 124 231);
+}
+
+.formsearch-results-div {
+  border: solid 1px blue;
+  width: 100%;
+  height: 90%;
+  margin-top: 5%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.formsearch-result-ul {
+  width: 80%;
+  height: 6%;
+  border: 1px solid rgb(153, 149, 149);
+}
+
+.div-img-result-searchform {
+  width: 30%;
+  height: 90%;
+}
+
+.div-no-results {
+  margin-top: 70%;
+}
+
+.formsearch-result-img {
+  width: 100%;
+  height: 100%;
+}
+.div-name-formsearch {
+  width: 50%;
+  height: 90%;
+} */
+
+.search-results {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  z-index: 10;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  /* border: 1px solid red; */
+}
+
+.search-result:hover {
+  background-color: #fafafa;
+}
+
+.search-result img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
+  /* border: 1px solid rgb(149, 0, 255); */
+}
+
+.search-result-info {
+  flex-grow: 1;
+  /* border: 1px solid rgb(217, 255, 0); */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-result-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.search-result-info p {
+  font-size: 12px;
+  margin: 0;
+  color: #8e8e8e;
+}
+
+.div-no-results {
+  margin-top: 70%;
+}
+
+@media (min-width: 576px) {
+  .search-result img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+  }
+
+  .search-result-info h4 {
+    font-size: 16px;
+  }
+
+  .search-result-info p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-result img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+  }
+
+  .search-result-info h4 {
+    font-size: 18px;
+  }
+
+  .search-result-info p {
+    font-size: 16px;
+  }
+}

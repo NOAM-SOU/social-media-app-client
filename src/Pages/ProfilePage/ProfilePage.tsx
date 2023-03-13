@@ -16,20 +16,11 @@ function Profile() {
 
   const { user, getUser } = authStore;
   const { getUserPosts } = postStore;
-  const { getFollowedUsers, followedUsers } = followStore;
+  const { another } = userStore;
+  const { getFollowedUsers, followedUsers, checkFollowStatus } = followStore;
   const [following, setFollowing] = useState<boolean>(false);
 
   useEffect(() => {
-    async function checkFollowingStatus() {
-      const includes = followedUsers.find((u) => u._id === id);
-      console.log("inclues follow", includes);
-      includes ? setFollowing(true) : setFollowing(false);
-      // if (includes) {
-      //   setFollowing(true);
-      // } else {
-      //   setFollowing(false);
-      // }
-    }
     async function fetchUser() {
       if (id === user?.id) {
         await getUser(id!);
@@ -37,7 +28,10 @@ function Profile() {
       } else {
         await getUser(id!, false);
         await getFollowedUsers(user?.id!);
-        await checkFollowingStatus();
+        const followSt = await checkFollowStatus(user?.id!, another._id!);
+        // console.log(followSt, "THE FUNCTION CHECK");
+
+        setFollowing(followSt);
         await getUserPosts(id!, false);
       }
       setIsLoading(false);

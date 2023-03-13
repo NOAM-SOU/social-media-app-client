@@ -23,7 +23,7 @@ function InputsForm(props: any) {
             props.handleSelectFile(e);
             props.setFieldValue("profileImg", props.file);
             //   imageHandler(file);
-            console.log("img", e.target.files);
+            // console.log("img", e.target.files);
           }}
         />
       </div>

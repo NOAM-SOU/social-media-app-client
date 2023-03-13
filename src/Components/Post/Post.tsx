@@ -33,24 +33,26 @@ function Post(props: PostProps) {
 
   useEffect(() => {
     async function fetchData() {
-      console.log("LLEGE");
+      // console.log("LLEGE");
 
       await getUser(props.post?.userId!, false);
       const likeSt = await checkLikeStatus(user?.id!, props.post?._id!);
-      console.log(likeSt, "LIKEST");
+      // console.log(likeSt, "LIKEST");
 
       setLike(likeSt);
       setIsLoading(false);
     }
     fetchData();
-  }, [like, setLike, props.post?._id!]);
+  }, [like, setLike]);
 
   const toggleLike = (userId: string, postId: string) => {
     if (like) {
       removeLike(userId, postId);
+      console.log(props?.post, "POST OBEJCT AFTER REMOVED LIKE");
       setLikeCount(likeCount! - 1);
     } else {
       addLike(userId, postId);
+
       setLikeCount(likeCount! + 1);
     }
     setLike(!like);

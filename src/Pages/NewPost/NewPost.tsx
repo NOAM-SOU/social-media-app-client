@@ -1,15 +1,12 @@
 import { Form, Formik } from "formik";
 import { observer } from "mobx-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { rootStores } from "../../Stores/main";
-// import imageHandler from "../../Components/FormTools/ValidationLogic";
 import {
   initialValues,
   validationSchema,
 } from "../../Components/FormTools/formValidation/postValidation";
-import CustomInput from "../../Components/FormTools/CustomInput/CustomInput";
 import { useNavigate } from "react-router-dom";
-// import Layout from "../../Components/Layout";
 import "./NewPost.css";
 import _ from "lodash";
 
@@ -18,28 +15,33 @@ import {
   fileSelected,
   readerFile,
 } from "../../Components/FormTools/ValidationLogic";
-import Layout from "../../Components/Layout/Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const { authStore, postStore } = rootStores;
 
 function NewPost() {
   const [file, setFile] = React.useState<File>();
   const [img, setImg] = useState<string>(initialValues.img);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  // const [img, setImg] = useState("");
+  const handleAddPhotoClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   const { addPost } = postStore;
   const { user } = authStore;
 
   const navigate = useNavigate();
 
   return (
-    // <Layout>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
-        console.log("values", values);
-
         if (file) {
           const formData = new FormData();
           formData.append("img", file);
@@ -56,54 +58,71 @@ function NewPost() {
         setImg(initialValues.img);
         await resetForm();
         setSubmitting(false);
+        navigate(`/profilepage/${user?.id}`);
       }}
     >
       {(props) => (
         <Form>
-          <div className="div-form-newpost-container">
-            <label className="label-newpost" htmlFor="file-input">
-              <img src={img} className="social-postimg-media" />
-              <CustomInput
-                name="img"
-                type="file"
-                accept="image/*"
-                id="input-img-newstyle"
-                onChange={async (e: React.ChangeEvent<HTMLInputElement>) => {
-                  await props.handleChange(e);
-                  await readerFile(e, setImg);
-
-                  await fileSelected(e, setFile);
-                  // props.setFieldValue("profileImg", e.target.value);
-
-                  // console.log("img", profileImg);
-                }}
-              />
-            </label>
-            <div className="inputs-newpost-social">
-              <CustomInput
-                onChange={props.handleChange}
-                id="newpost-social-newstyle"
-                name="title"
-                placeholder="Title"
-              />
-              <CustomInput
-                name="content"
-                placeholder="Content"
-                onChange={props.handleChange}
-              />
+          <div className="new-post-container">
+            <div className="new-post-header">
+              <h2>New Post</h2>
             </div>
-            <button
-              type="submit"
-              id="button-sub-post-form"
-              disabled={!props.dirty || !props.isValid}
-            >
-              {props.isSubmitting ? "loading..." : "Add post"}
-            </button>
+            <div className="new-post-content">
+              <div className="new-post-photo">
+                {img ? (
+                  <img
+                    src={img}
+                    alt="Selected file"
+                    width="100%"
+                    height="100%"
+                  />
+                ) : (
+                  <>
+                    <div onClick={handleAddPhotoClick}>
+                      <FontAwesomeIcon icon={faCamera as IconProp} size="3x" />
+                      <span>Add Photo</span>
+                    </div>
+                    <input
+                      name="img"
+                      type="file"
+                      accept="image/*"
+                      onChange={async (
+                        e: React.ChangeEvent<HTMLInputElement>
+                      ) => {
+                        await props.handleChange(e);
+                        await readerFile(e, setImg);
+
+                        await fileSelected(e, setFile);
+                        // props.setFieldValue("profileImg", e.target.value);
+
+                        // console.log("img", profileImg);
+                      }}
+                      style={{ display: "none" }}
+                      ref={fileInputRef}
+                    />
+                  </>
+                )}
+              </div>
+
+              <div className="new-post-description">
+                <textarea
+                  name="content"
+                  placeholder="Write a caption..."
+                  value={props.values.content}
+                  onChange={props.handleChange}
+                />
+              </div>
+
+              <div className="new-post-share">
+                <button type="submit" disabled={!props.dirty || !props.isValid}>
+                  {props.isSubmitting ? "loading..." : "Add post"}
+                </button>
+              </div>
+            </div>
           </div>
         </Form>
       )}
     </Formik>
-    // </Layout>
   );
 }
 

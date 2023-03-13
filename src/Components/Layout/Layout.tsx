@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { ChildrenProps } from "../../types/props";
 import { FaHome, FaPlusSquare, FaSearch, FaUser } from "react-icons/fa";
 import "./Layout.css";
-console.log(FaUser);
+// console.log(FaUser);
 import { rootStores } from "../../Stores/main";
 
 const { authStore } = rootStores;

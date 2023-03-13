@@ -10,7 +10,7 @@ class LikeApi {
   }
 
   async getLikes(postId: string) {
-    console.log("api idpost", postId);
+    // console.log("api idpost", postId);
 
     return await api.get(`like/getlikes/${postId}`);
   }

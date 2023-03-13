@@ -21,7 +21,7 @@ const Header = ({ id, state, setState }: HeaderProps) => {
     setState!(!state);
   };
 
-  console.log("state", state);
+  // console.log("state", state);
   return (
     <div className="header-container">
       <div className="header-part1">

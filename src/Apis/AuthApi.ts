@@ -12,7 +12,7 @@ class AuthApi {
   };
 
   login = async (user: UserI) => {
-    console.log(user);
+    // console.log(user);
 
     const res = await loginApi.post("/login", user);
     return res.data;

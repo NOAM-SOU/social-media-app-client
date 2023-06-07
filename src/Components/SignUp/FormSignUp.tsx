@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { observer } from "mobx-react";
 import { Formik, Form } from "formik";
 import CustomInput from "../FormTools/CustomInput/CustomInput";
@@ -23,6 +23,14 @@ const { authStore } = rootStores;
 
 function FormSignUp() {
   const [file, setFile] = React.useState<File>();
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleAddPhotoClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   // console.log(file);
 
@@ -66,11 +74,11 @@ function FormSignUp() {
       }}
     >
       {(props) => (
-        <Form className="div-form-principal-signup">
-          <div className="div-form-register-container">
-            <div className="image-upload">
+        <Form>
+          <div className="signup-form">
+            <div className="image-upload" onClick={handleAddPhotoClick}>
               <img src={profileImg} className="social-profileimg-media" />
-              <CustomInput
+              <input
                 id="input-upload-signupform"
                 name="profileImg1"
                 type="file"
@@ -84,35 +92,37 @@ function FormSignUp() {
 
                   // console.log("img", profileImg);
                 }}
+                style={{ display: "none" }}
+                ref={fileInputRef}
               />
             </div>
             <div className="div-inputs-formsignup">
-              <CustomInput
+              <input
                 className="signupform-input"
                 name="name"
                 placeholder="Name"
                 onChange={props.handleChange}
               />
-              <CustomInput
+              <input
                 name="email"
                 placeholder="email"
                 className="signupform-input"
                 onChange={props.handleChange}
               />
-              <CustomInput
+              <input
                 name="biography"
                 placeholder="Biography"
                 className="signupform-input"
                 onChange={props.handleChange}
               />
-              <CustomInput
+              <input
                 name="password"
                 type="password"
                 placeholder="Password"
                 className="signupform-input"
                 onChange={props.handleChange}
               />
-              <CustomInput
+              <input
                 name="confirmPassword"
                 type="password"
                 placeholder="Confirm password"
@@ -123,12 +133,12 @@ function FormSignUp() {
               <AuthError code={errorStatus.code} error={errorStatus.error} />
               <button
                 type="submit"
-                id="button-sub-register-form"
+                className="button-sub-signup-form"
                 disabled={!props.dirty || !props.isValid}
               >
                 {props.isSubmitting ? "loading..." : "sign up"}
               </button>
-              <div className="register-linkto-login">
+              <div>
                 Already have an account? <Link to="/login">Login</Link>
               </div>
             </div>

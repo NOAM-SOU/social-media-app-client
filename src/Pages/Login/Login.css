@@ -1,10 +1,8 @@
-.social-login-media {
+/* .social-login-media {
   height: 100vh;
-  /* border: 1px solid red; */
 }
 
 .social-login-well-media {
-  /* border: 1px solid rgb(35, 46, 43); */
   height: 10%;
   padding-top: 8%;
   font-family: "Carter One", cursive;
@@ -19,6 +17,19 @@
 }
 
 .social-login-form-media {
-  /* border: 1px solid rgb(0, 255, 13); */
   height: 70%;
+} */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-page-img {
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 20px;
 }

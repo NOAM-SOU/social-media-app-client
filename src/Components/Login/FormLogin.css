@@ -1,5 +1,4 @@
-.first-div-form-formlogin {
-  /* border: 1px solid blue; */
+/* .first-div-form-formlogin {
   width: 100%;
   height: 100%;
   display: flex;
@@ -8,7 +7,6 @@
 }
 
 .div-form-login-container {
-  /* border: 1px solid red; */
   margin-top: 25%;
   height: 50%;
   width: 100%;
@@ -26,7 +24,163 @@
 }
 
 .login-linkto-registr {
-  /* border: 1px solid rgb(152, 59, 240); */
   margin-top: 5%;
   color: rgb(232 124 231);
+} */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 40px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 400px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.button-sub-login-form {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3897f0;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.or-divider-text {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.facebook-login {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3b5998;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #003569;
+  margin-bottom: 10px;
+}
+
+.signup-link {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.signup-link span {
+  margin-right: 5px;
+}
+
+.signup-link a {
+  color: #003569;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Media queries for responsive design */
+
+@media (max-width: 767px) {
+  .login-form {
+    padding: 20px;
+  }
+
+  .login-page-img {
+    max-width: 150px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .or-divider-text {
+    font-size: 12px;
+    margin: 0 5px;
+  }
+
+  .facebook-login {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .forgot-password {
+    font-size: 12px;
+  }
+
+  .signup-link {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login-form {
+    padding: 30px;
+  }
+
+  .login-page-img {
+    max-width: 170px;
+    margin-bottom: 15px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .or-divider-text {
+    font-size: 14px;
+    margin: 0 10px;
+  }
+
+  .facebook-login {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .forgot-password {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .signup-link {
+    font-size: 14px;
+  }
 }

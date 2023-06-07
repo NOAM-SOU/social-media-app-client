@@ -30,14 +30,14 @@ function FormLogin() {
       }}
     >
       {(props) => (
-        <Form className="first-div-form-formlogin">
-          <div className="div-form-login-container">
-            <CustomInput
+        <Form>
+          <div className="login-form">
+            <input
               name="email"
               placeholder="email"
               onChange={props.handleChange}
             />
-            <CustomInput
+            <input
               name="password"
               type="password"
               placeholder="Password"
@@ -47,15 +47,26 @@ function FormLogin() {
 
             <button
               type="submit"
-              id="button-sub-login-form"
+              className="button-sub-login-form"
               disabled={!props.dirty || !props.isValid}
             >
               {props.isSubmitting ? "loading..." : "login"}
             </button>
-            <div className="login-linkto-registr">
-              Don't have an account? <Link to="/register">Sign Up</Link>
+            <div className="or-divider">
+              <span className="or-divider-text">or</span>
             </div>
+            <button className="facebook-login">Log in with Facebook</button>
+            <a href="#" className="forgot-password">
+              Forgot password?
+            </a>
           </div>
+          <div>
+            Don't have an account? <Link to="/register">Sign Up</Link>
+          </div>
+          {/* <div className="signup-link">
+            <span>Don't have an account?</span>
+            <Link to="/register">Sign up</Link>
+          </div> */}
         </Form>
       )}
     </Formik>
